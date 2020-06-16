@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    background: rgba(217, 236, 236, 0.78);
+    font-family: Montserrat;
+    color: black;
+    font-weight: bold;
+}
+h3, p {
+    margin:15px;
+}
+h3 {
+    font-weight: bolder;
+}
+nav {
+    background: rgba(30, 144, 255, 0.83);
+    height: 3em;
+    width: 100%;
+    padding: 10px;
+    position: fixed;
+    display: block;
+    text-align: center;
+
+}
+
+nav>ul>li {
+    display: inline-block;
+}
+
+a{
+    padding: 15px;
+    text-decoration: none;
+    color: #000000;
+    font-weight: bolder;
+}
+a:hover {
+    color: #dcc514;
+}
+img {
+    height: 275px;
+}
+.img-div{
+    border: 2px solid indianred;
+    height: 280px;
+    width: 250px;
+    border-radius: 10px;
+}
+#production {
+    border: 2px solid #ecd987;
+}
+
+#broadcast {
+    border: 2px solid #ea8282;
+}
