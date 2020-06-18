@@ -1,0 +1,18 @@
+header {
+    width: 100%;
+    background: #add7d7;
+}
+nav {
+    text-align: center;
+}
+
+.menu-list>li>a {
+    text-decoration: none;
+    color: #475370;
+
+}
+
+nav>ul>li {
+    display: inline-block;
+    padding: 10px;
+}
