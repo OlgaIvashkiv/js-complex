@@ -36,7 +36,7 @@ a:hover {
     color: #dcc514;
 }
 img {
-    height: 275px;
+    max-height: 275px;
 }
 .img-div{
     border: 2px solid indianred;

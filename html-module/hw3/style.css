@@ -1,6 +1,14 @@
-header {
+body {
+    font-size: 18px;
+    font-family: 'Roboto Condensed', sans-serif;
+
+}
+header, footer {
     width: 100%;
     background: #add7d7;
+}
+footer{
+    margin-top: 10px;
 }
 nav {
     text-align: center;
@@ -11,8 +19,60 @@ nav {
     color: #475370;
 
 }
+.menu-list>li>a:hover {
+    color: rgba(172, 108, 193, 0.44);
+}
 
 nav>ul>li {
     display: inline-block;
     padding: 10px;
+}
+
+h1 {
+    font-size: 20px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.img-div {
+    float: left;
+
+}
+
+img{
+    max-height: 250px;
+    margin: 0 10px 10px;
+    border: 2px solid #7ea47f;
+    border-radius: 10%;
+}
+.about-character-div{
+    margin: 20px auto;
+}
+
+h3{
+    text-align: center;
+}
+h3:after{
+    clear: both;
+}
+.about-character-div:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#lois-griffin>.img-div{
+    float: right;
+}
+
+#chris-griffin>.img-div{
+    float: right;
+}
+
+#brian-griffin>.img-div{
+    float: right;
+}
+
+.character-text {
+    margin: 10px;
 }
