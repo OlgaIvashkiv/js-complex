@@ -172,17 +172,67 @@ console.log(word3);
 
 //- Дан масив ['a', 'b', 'c']. Додайте йому в кінець елементи 1, 2, 3 за допомогою циклу.
 
-
+let arrayNew = [];
+for (let j = 1; j<=3; j++) {
+    arrayNew=arr1;
+    arrayNew.push(j);
+}
+console.log(arrayNew);
 // - Дан масив [1, 2, 3]. Зробіть з нього новий масив [3, 2, 1].
+let numberArray = [1, 2, 3];
+let reverseNumberArray = [];
+for (let j = numberArray.length - 1; j >= 0; j--) {
+    const item = numberArray[j];
+    reverseNumberArray.push(item);
+}
+console.log(reverseNumberArray);
+
 // - Дан масив [1, 2, 3]. Додайте йому в кінець елементи 4, 5, 6.
+let numberArray1 = [1, 2, 3];
+for (let j = 4; j <=6; j++) {
+    numberArray1.push(j);
+}
+console.log(numberArray1);
 // - Дан масив [1, 2, 3]. Додайте йому в початок елементи 4, 5, 6.
+let numberArray2 = [1, 2, 3];
+numberArray2.unshift(4,5,6);
+console.log(numberArray2);
+
 // - Дан масив ['js', 'css', 'jq']. Виведіть на екран перший елемент за допомогою shift()
+let arrayShift = ['js', 'css', 'jq'];
+let shiftedItem = arrayShift.shift();
+console.log(shiftedItem);
+
 // - Дан масив ['js', 'css', 'jq']. Виведіть на екран останній елемент за допомогою pop()
+let poppedItem = arrayShift.pop();
+console.log(poppedItem);
+
 // - Дан масив [1, 2, 3, 4, 5]. За допомогою методу/функції slice перетворіть масив в [4, 5].
+let arrayOfNumbers = [1, 2, 3, 4, 5];
+console.log(arrayOfNumbers.slice(3, 5));
+
 // - Дан масив [1, 2, 3, 4, 5]. За допомогою методу/функції slice перетворіть масив в [1,2].
+let slicedArray =  arrayOfNumbers.slice(0,2);
+console.log(slicedArray);
+
 // - Дан масив [1, 2, 3, 4, 5]. За допомогою методу/функції splice перетворіть масив в [1, 4, 5].
+let arrayOfNumbers1 = [1, 2, 3, 4, 5];
+arrayOfNumbers1.splice(1, 2);
+console.log(arrayOfNumbers1);
+
 // - Дан масив [1, 2, 3, 4, 5]. За допомогою методу/функції splice зробіть з нього масив [1, 2, 3, 'a', 'b', 'c', 4, 5].
+let arrayOfNumbers2 = [1, 2, 3, 4, 5];
+arrayOfNumbers2.splice(2, 0, 'a', 'b', 'c');
+console.log(arrayOfNumbers2);
+
 // - Дан масив [1, 2, 3, 4, 5]. За допомогою методу/функції splice зробіть з нього масив [1, 'a', 'b', 2, 3, 4, 'c', 5, 'e'].
+let arrayOfNumbers3 = [1, 2, 3, 4, 5];
+arrayOfNumbers3.splice(1,0,'a', 'b');
+arrayOfNumbers3.splice(5,0,'c');
+arrayOfNumbers3.splice(8,0,'e');
+console.log(arrayOfNumbers3);
 // - Взяти масив з 10 чисел або створити його. Вивести в консоль тільки ті елементи, значення яких є парними.
+
+
 // - Взяти масив з 10 чисел або створити його. Створити 2й порожній масив. За допомогою будь-якого циклу та push () скопіювати значення одного масиву в інший
 // - Взяти масив з 10 чисел або створити його. Створити 2й порожній масив. За допомогою будь-якого циклу скопіювати значення одного масиву в інший.
