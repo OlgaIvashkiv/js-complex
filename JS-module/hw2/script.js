@@ -126,24 +126,24 @@ for (let i = 0; i < 100; i++) {
 
 }
 
-// // line 24
-// for (let minute = 0; minute < 2; minute++) {
-//     for (let sec = 0; sec < 60; sec++) {
-//         console.log('min-' + minute +' '+'sec- ' + sec);
-//     }
-// }
-//
-// //Line 25
-// for (let hour = 0; hour < 3; hour++) {
-//     for (let minute = 0; minute < 60; minute++) {
-//         if (hour === 2 && minute === 20){
-//             break;
-//         }
-//         for (let second = 0; second < 60; second++) {
-//             console.log('hour-' + hour + 'min-' + minute +' '+'sec-' + second);
-//         }
-//     }
-// }
+// line 24
+for (let minute = 0; minute < 2; minute++) {
+    for (let sec = 0; sec < 60; sec++) {
+        console.log('min-' + minute +' '+'sec- ' + sec);
+    }
+}
+
+//Line 25
+for (let hour = 0; hour < 3; hour++) {
+    for (let minute = 0; minute < 60; minute++) {
+        if (hour === 2 && minute === 20){
+            break;
+        }
+        for (let second = 0; second < 60; second++) {
+            console.log('hour-' + hour + 'min-' + minute +' '+'sec-' + second);
+        }
+    }
+}
 
 //Додатково
 // - Дано масив: [ 'a', 'b', 'c'] . За допомогою циклу for зібрати всі букви в слово.
