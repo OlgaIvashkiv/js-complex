@@ -82,25 +82,18 @@ let users = [
 			];
 // - звернутися в відповідну ячейку масиву і відповідний параметр об'єкта і вивести в консольх наступне
 // - статус Андрія
-for (const user of users) {
-    if (user.name === 'andrey'){
-        console.log(`${user.name} status -  ${user.status}`)
-    }
-}
-
+console.log(users[7].name);
 //  статус Максима
-for (const user of users) {
-    if (user.name === 'max'){
-        console.log(`${user.name} status -  ${user.status}`)
-    }
-}
-
+console.log(users[4].name);
 // - ім'я передостаннього об'єкту
-for (const user of users) {
-}
+console.log(users[9].name);
 // - ім'я третього об'єкта
+console.log(users[2].name);
 // - вік Олега
+console.log(users[6].age);
 // - вік Олі
+console.log(users[3].age);
 // - вік + ім'я 5го об'єкта
+console.log(users[4].name, users[4].age);
 // - вік + сатус Анни
-// Приклад: вивести ім'я 1го об'єкта. Відповідь: console.log (users [0] .name). Будьте уважні! 4й об'єкт має індес 3!
+console.log(users[5].name, users[5].status);
