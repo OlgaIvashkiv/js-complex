@@ -7,7 +7,7 @@ fetch('https://jsonplaceholder.typicode.com/posts')
             let commentDiv = document.createElement('div');
             for (const key in comment) {
                 let keyDiv = document.createElement('div');
-                keyDiv.innerText = `${comment[key]}`
+                keyDiv.innerText = `${key} - ${comment[key]}`
                 commentDiv.appendChild(keyDiv);
             }
             wrap.appendChild(commentDiv);

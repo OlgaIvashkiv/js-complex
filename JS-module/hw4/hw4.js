@@ -184,3 +184,75 @@ arrayOfNumbersWithI([1, 2, 3, 45,6,0,877,9,12],5);
 //*** створити функцію яка буде переносити елементи з значенням 0 у кінець маисву.
 // Зберігаючи при цьому порядок не нульових значень.
 // Двожина масиву від 2 до 100
+
+function zeroesToTheEnd(array) {
+    let zeroes = [];
+    let numbers = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === 0){
+            zeroes.push(array[i])
+        }
+        else {
+            numbers.push(array[i])
+        }
+    }return numbers.concat(zeroes);
+
+}
+
+console.log(zeroesToTheEnd([1, 0, 6, 0, 3]));
+
+//Створити функцію яка :
+// - Додає в боді блок з текстом "Hello owu"
+function bodyElem() {
+    let bodyElement = document.createElement('div');
+    bodyElement.innerText = 'Hello owu';
+    document.body.appendChild(bodyElement);
+}
+bodyElem();
+
+//Додає в боді елемент з текстом . Тип елементу та текст отримати через аргументи
+function addTextToBody(tag, text) {
+    let bodyElement = document.createElement(tag);
+    bodyElement.innerText = text;
+    document.body.appendChild(bodyElement);
+}
+addTextToBody('div','Hello');
+
+//риймає масив автомобілів (можна взяти з попередніх дз ),та
+// індентифікатор елемнту в який потрібно додати список цих автомобілів.
+let cars = [
+    {producer:"subaru",model: "wrx",year: 2010, color:"blue",type: "sedan",engine: "ej204x",volume: 2,power: 400},
+    {producer:"subaru",model: "legacy",year: 2007, color:"silver",type: "sedan",engine: "ez30",volume: 3,power: 250},
+    {producer:"subaru",model: "tribeca",year: 2011, color:"white",type: "jeep",engine: "ej20",volume: 2,power: 300},
+    {producer:"subaru",model: "leone",year: 1998, color:"yellow",type: "sedan",engine: "ez20x",volume: 2,power: 140},
+    {producer:"subaru",model: "impreza",year: 2014, color:"red",type: "sedan",engine: "ej204x",volume: 2,power: 200},
+    {producer:"subaru",model: "outback",year: 2014, color:"red",type: "hachback",engine: "ej204",volume: 2,power: 165},
+    {producer:"bmw",model: "115",year: 2013, color:"red",type: "hachback",engine: "f15",volume: 1.5,power: 120},
+    {producer:"bmw",model: "315",year: 2010, color:"white",type: "sedan",engine: "f15",volume: 1.5, power: 120},
+    {producer:"bmw",model: "650",year: 2009, color:"black",type: "coupe",engine: "f60",volume: 6,power: 350},
+    {producer:"bmw",model: "320",year: 2012, color:"red",type: "sedan",engine: "f20",volume: 2,power: 180},
+    {producer:"mercedes",model: "e200",year: 1990, color:"silver",type: "sedan",engine: "eng200",volume: 2,power: 180},
+    {producer:"mercedes",model: "e63",year: 2017, color:"yellow",type: "sedan",engine: "amg63",volume:3,power: 400},
+    {producer:"mercedes",model: "c250",year: 2017, color:"red",type: "sedan",engine: "eng25",volume: 2.5,power: 230}
+];
+function addArrayOfCars(array,id) {
+    let wrap = document.createElement('div');
+    wrap.id = id;
+    for (const item of array) {
+    let divElement = document.createElement('div');
+        for (const key in item) {
+            let keyDiv = document.createElement('div');
+            keyDiv.innerText = `${key}- ${item[key]}`
+            divElement.appendChild(keyDiv)
+        }
+      wrap.appendChild(divElement);
+    } document.body.appendChild(wrap)
+}
+
+addArrayOfCars(cars, 'wrap');
+
+//**- функція приймає 2 масиви з рівною кількістю об'єктів та з'єднює в один об'єкт користувача та місто з відповідними "id" та "user_id",
+// та повертає масив цих з'єднаних об'єктів.
+// Приклад масивів:
+let usersWithId = [{id: 1, name: 'vasya', age: 31, status: false}, {id: 2, name: 'petya', age: 30, status: true}, {id: 3, name: 'kolya', age: 29, status: true}, {id: 4, name: 'olya', age: 28, status: false},];
+let citiesWithId = [{user_id: 3, country: 'USA', city: 'Portland'}, {user_id: 1, country: 'Ukraine', city: 'Ternopil'}, {user_id: 2, country: 'Poland', city: 'Krakow'}, {user_id: 4, country: 'USA', city: 'Miami'},];
