@@ -327,3 +327,21 @@ function rulesF(rulesArray) {
 
 rulesF(rules);
 
+//Additional
+//1) Точная степень двойки.
+// Дано натуральное число N.
+// Выведите слово YES, если число N является точной степенью двойки,
+// или слово NO в противном случае.
+// Операцией возведения в степень пользоваться нельзя!
+function powerOfTwo(n) {
+    let result = n/2
+    if (result>1){
+        return powerOfTwo(n/2)
+    }
+    if(result<1){
+        return 'NO'
+    }
+    return 'YES'
+}
+
+console.log(powerOfTwo(4));
