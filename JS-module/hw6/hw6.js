@@ -39,4 +39,15 @@ console.log(users.sort(((a, b) => b.name.length - a.name.length)));
 // - пройтись по ньому та додати кожному юзеру поле id - яке характеризує унікальний
 // індентифікатор (По якому принципу його створювати - ваше рішення), та зберегти це в новий масив
 // (первинний масив залишиться без змін)
+let usersWithId = users.map((value, index) => {
+        let newUser = {};
+        newUser.id = index+1;
+        newUser.name = value.name;
+        newUser.age = value.age;
+        newUser.status = value.status;
+        return newUser
+})
+console.log(usersWithId);
+console.log(users);
 // - відсортувати його за індентифікатором
+console.log(usersWithId.sort(((a, b) => a.id - b.id)));
