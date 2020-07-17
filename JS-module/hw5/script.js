@@ -232,7 +232,29 @@ class Cinderella extends Human{
     }
 }
 
-new Cinderella()
+let cinderella1 = new Cinderella('Olga',26,35.5)
+console.log(cinderella1);
+let cinderella2 = new Cinderella('Julia',22,37)
+console.log(cinderella2);
+let cinderella3 = new Cinderella('Natalia',22,37.5)
+console.log(cinderella3);
+let cinderella4 = new Cinderella('Katia',24,36.5)
+console.log(cinderella4);
+let cinderella5 = new Cinderella('Diana',29,38.5)
+console.log(cinderella5);
+let cinderella6 = new Cinderella('Tania',51,38)
+console.log(cinderella6);
+let cinderella7 = new Cinderella('Yana',27,35)
+console.log(cinderella7);
+let cinderella8 = new Cinderella('Natasha',42,36)
+console.log(cinderella8);
+let cinderella9 = new Cinderella('Nastia',24,39)
+console.log(cinderella9);
+let cinderella10 = new Cinderella('Alisa',24,40)
+console.log(cinderella10);
+
+let cinderellaArray = [cinderella1,cinderella2,cinderella3,cinderella4,cinderella5,cinderella6,cinderella7,cinderella8,cinderella9,cinderella10];
+
 
 class Prince extends Human{
     constructor(name, age, shoeSize) {
@@ -241,12 +263,101 @@ class Prince extends Human{
     }
     findCinderella(array){
         for (const element of array) {
-            if (footSize.element === this.shoeSize){
-                console.log(`My name is ${this.name} and my Cinderella is ${size.name}`)
+            if (element.footSize === this.shoeSize){
+                console.log(`My name is ${this.name} and my Cinderella is ${element.name}`)
             }
         }
     }
 }
+
+let prince1 = new Prince('Max', 23, 35.5);
+prince1.findCinderella(cinderellaArray);
+
+let prince2 = new Prince('Sasha',28,40);
+prince2.findCinderella(cinderellaArray);
+
+let prince3 = new Prince('Pasha',26,39);
+prince3.findCinderella(cinderellaArray);
+
+let prince4 = new Prince('Alex',28,37.5);
+prince4.findCinderella(cinderellaArray);
+
+let prince5 = new Prince('Dima',28,35);
+prince5.findCinderella(cinderellaArray);
+
+let prince6 = new Prince('Yura',28,36);
+prince6.findCinderella(cinderellaArray);
+
+let prince7 = new Prince('Ivan',28,38.5);
+prince7.findCinderella(cinderellaArray);
+
+let prince8 = new Prince('Vasya',28,36.5);
+prince8.findCinderella(cinderellaArray);
+
+let prince9 = new Prince('Ilya',28,37);
+prince9.findCinderella(cinderellaArray);
+
+let prince10 = new Prince('Serge',28,38);
+prince10.findCinderella(cinderellaArray);
+
+//-створити функцію конструктор попелюшка з полями ім'я, вік, розмір ноги
+// --Створити 10 попелюшок , покласти їх в масив
+// --Сторити об'єкт типу "принц" за допомоги функції конструктора з полями ім'я, вік, туфелька яку він знайшов, та функцію "пошук попелюшки"
+// -- функція повинна приймати масив попелюшок, та шукає ту котра йому підходить
+function CinderellaNew(name,age,shoeSize){
+    this.name = name;
+    this.age = age;
+    this.shoeSize = shoeSize;
+}
+
+let newCinderella1 = new CinderellaNew('Olga',26,35.5);
+let newCinderella2 = new CinderellaNew('Julia',22,37);
+let newCinderella3 = new CinderellaNew('Natalia',22,37.5);
+let newCinderella4 = new CinderellaNew('Katia',24,36.5);
+let newCinderella5 = new CinderellaNew('Diana',29,38.5);
+let newCinderella6 = new CinderellaNew('Tania',51,38);
+let newCinderella7 = new CinderellaNew('Yana',27,35);
+let newCinderella8 = new CinderellaNew('Natasha',42,36);
+let newCinderella9 = new CinderellaNew('Nastia',24,39);
+let newCinderella10 = new CinderellaNew('Alisa',24,40);
+
+let newCinderellaArray = [newCinderella1,newCinderella2,newCinderella3,newCinderella4,newCinderella5,newCinderella6,newCinderella7,newCinderella8,newCinderella9,newCinderella10];
+
+function PrinceNew(name,age,shoe){
+    this.name = name;
+    this.age = age;
+    this.shoe = shoe;
+    this.findCinderellaShoe = function (array) {
+        for (const field of array) {
+            if (field.shoeSize === shoe) {
+                console.log(`I'm ${this.name} and this is my Cinderella ${field.name}`);
+
+            }
+        }
+    }
+}
+
+let princeNew1 = new PrinceNew('Max', 23, 35.5);
+princeNew1.findCinderellaShoe(newCinderellaArray);
+let princeNew2 = new PrinceNew('Sasha',28,40);
+princeNew2.findCinderellaShoe(newCinderellaArray);
+let princeNew3 = new PrinceNew('Pasha',26,39);
+princeNew3.findCinderellaShoe(newCinderellaArray);
+let princeNew4 = new PrinceNew('Alex',28,37.5);
+princeNew4.findCinderellaShoe(newCinderellaArray);
+let princeNew5 = new PrinceNew('Dima',28,35);
+princeNew5.findCinderellaShoe(newCinderellaArray);
+let princeNew6 = new PrinceNew('Yura',28,36);
+princeNew6.findCinderellaShoe(newCinderellaArray);
+let princeNew7 = new PrinceNew('Ivan',28,38.5);
+princeNew7.findCinderellaShoe(newCinderellaArray);
+let princeNew8 = new PrinceNew('Vasya',28,36.5)
+princeNew8.findCinderellaShoe(newCinderellaArray);
+let princeNew9 = new PrinceNew('Ilya',28,37);
+princeNew9.findCinderellaShoe(newCinderellaArray);
+let princeNew10 = new PrinceNew('Serge',28,38);
+princeNew10.findCinderellaShoe(newCinderellaArray);
+
 
 
 
