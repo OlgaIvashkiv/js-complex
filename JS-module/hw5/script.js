@@ -330,7 +330,7 @@ function PrinceNew(name,age,shoe){
     this.findCinderellaShoe = function (array) {
         for (const field of array) {
             if (field.shoeSize === shoe) {
-                console.log(`I'm ${this.name} and this is my Cinderella ${field.name}`);
+                console.log(`I'm ${this.name} & this is my Cinderella ${field.name}`);
 
             }
         }
