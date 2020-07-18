@@ -51,3 +51,108 @@ console.log(usersWithId);
 console.log(users);
 // - відсортувати його за індентифікатором
 console.log(usersWithId.sort(((a, b) => a.id - b.id)));
+
+//наисать функцию калькулятора с 2мя числами и колбеком
+function calculatorOf2(a,b,callback) {
+   return callback(a,b)
+}
+let result = calculatorOf2(25,30, function (a,b) {
+    return a+b;
+});
+console.log(result)
+// -- наисать функцию калькулятора с 3мя числами и колбеком
+function calculatorOf3(a,b,c, callback) {
+    return callback(a,b,c)
+}
+let result1 = calculatorOf3(100,2,2,function (a,b,c) {
+    return (a+b)/c
+});
+console.log(result1)
+
+let cars = [ {producer:"subaru",model: "wrx",year: 2010, color:"blue",type: "sedan",engine: "ej204x",volume: 2,power: 400}, {producer:"subaru",model: "legacy",year: 2007, color:"silver",type: "sedan",engine: "ez30",volume: 3,power: 250}, {producer:"subaru",model: "tribeca",year: 2011, color:"white",type: "jeep",engine: "ej20",volume: 2,power: 300}, {producer:"subaru",model: "leone",year: 1998, color:"yellow",type: "sedan",engine: "ez20x",volume: 2,power: 140}, {producer:"subaru",model: "impreza",year: 2014, color:"red",type: "sedan",engine: "ej204x",volume: 2,power: 200}, {producer:"subaru",model: "outback",year: 2014, color:"red",type: "hachback",engine: "ej204",volume: 2,power: 165}, {producer:"bmw",model: "115",year: 2013, color:"red",type: "hachback",engine: "f15",volume: 1.5,power: 120}, {producer:"bmw",model: "315",year: 2010, color:"white",type: "sedan",engine: "f15",volume: 1.5, power: 120}, {producer:"bmw",model: "650",year: 2009, color:"black",type: "coupe",engine: "f60",volume: 6,power: 350}, {producer:"bmw",model: "320",year: 2012, color:"red",type: "sedan",engine: "f20",volume: 2,power: 180}, {producer:"mercedes",model: "e200",year: 1990, color:"silver",type: "sedan",engine: "eng200",volume: 2,power: 180}, {producer:"mercedes",model: "e63",year: 2017, color:"yellow",type: "sedan",engine: "amg63",volume:3,power: 400}, {producer:"mercedes",model: "c250",year: 2017, color:"red",type: "sedan",engine: "eng25",volume: 2.5,power: 230} ];
+// Відфільтрувати масив за наступними крітеріями :
+// - двигун більше 3х літрів
+console.log(cars.filter(value => value.volume > 3));
+// - двигун = 2л
+console.log(cars.filter(value => value.volume === 2));
+// - виробник мерс
+console.log(cars.filter(value => value.producer === 'mercedes'));
+// - двигун більше 3х літрів + виробник мерседес
+console.log(cars.filter(value => value.volume >= 3 && value.producer === 'mercedes'));
+// - двигун більше 3х літрів + виробник субару
+console.log(cars.filter(value => value.volume >= 3 && value.producer === 'subaru'));
+// - сили більше ніж 300
+console.log(cars.filter(value => value.power > 300));
+// - сили більше ніж 300 + виробник субару
+console.log(cars.filter(value => value.power > 300 && value.producer === 'subaru'));
+// - мотор серіі ej
+console.log(cars.filter(value => value.engine.startsWith('ej')));
+// - сили більше ніж 300 + виробник субару + мотор серіі ej
+console.log(cars.filter(value => value.power > 300 && value.producer === 'subaru' && value.engine.startsWith('ej')));
+// - двигун меньше 3х літрів + виробник мерседес
+console.log(cars.filter(value => value.volume < 3 && value.producer === 'mercedes'));
+// - двигун більше 2л + сили більше 250
+console.log(cars.filter(value => value.volume > 2 && value.power > 250));
+// - сили більше 250  + виробник бмв
+console.log(cars.filter(value => value.power > 250 && value.producer === 'bmw'));
+
+
+let usersWithAddress = [{id: 1, name: 'vasya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 16}}, {id: 2, name: 'petya', age: 30, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 1}}, {id: 3, name: 'kolya', age: 29, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 121}}, {id: 4, name: 'olya', age: 28, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 90}}, {id: 5, name: 'max', age: 30, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 115}}, {id: 6, name: 'anya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 2}}, {id: 7, name: 'oleg', age: 28, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 22}}, {id: 8, name: 'andrey', age: 29, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 43}}, {id: 9, name: 'masha', age: 30, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 12}}, {id: 10, name: 'olya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 16}}, {id: 11, name: 'max', age: 31, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 121}}];
+// -- отсортировать его по id пользователей
+console.log(usersWithAddress.sort((a, b) => a.id - b.id));
+// -- отсортировать его по id пользователей в обратном опрядке
+console.log(usersWithAddress.sort((a, b) => b.id - a.id));
+// -- отсортировать его по возрасту пользователей
+console.log(usersWithAddress.sort((a, b) => a.age - b.age));
+// -- отсортировать его по возрасту пользователей в обратном порядке
+console.log(usersWithAddress.sort((a, b) => b.age - a.age));
+// -- отсортировать его по имени пользователей
+console.log(usersWithAddress.sort((a, b) => {
+    if (a.name < b.name) {
+        return -1;
+    } else if (a.name > b.name) {
+        return 1
+    }
+    return 0;
+}));
+// -- отсортировать его по имени пользователей в обратном порядке
+console.log(usersWithAddress.sort((a, b) => {
+    if (b.name < a.name) {
+        return -1;
+    } else if (b.name > a.name) {
+        return 1
+    }
+    return 0;
+}));
+// -- отсортировать его по названию улицы  в алфавитном порядке
+console.log(usersWithAddress.sort((a, b) => {
+    if (a.address.street < b.address.street) {
+        return -1
+    } else if (a.address.street > b.address.street) {
+        return 1
+    }
+    return 0;
+}));
+// -- отсортировать его по номеру дома по возрастанию
+console.log(usersWithAddress.sort((a, b) => a.address.number - b.address.number));
+// -- отфильтровать (оставить) тех кто младше 30
+console.log(usersWithAddress.filter(value => value.age < 30));
+// -- отфильтровать (оставить) тех у кого отрицательный статус
+console.log(usersWithAddress.filter(value => !value.status));
+// -- отфильтровать (оставить) тех у кого отрицательный статус и младше 30 лет
+console.log(usersWithAddress.filter(value => !value.status && value.age < 30));
+// -- отфильтровать (оставить) тех у кого номер дома четный
+console.log(usersWithAddress.filter(value => value.address.number % 2 === 0));
+
+//Створити обєкт автомобіля з полями:
+// Марка автомобля, потужність двигуна, власник, ціна, рік випуску.
+
+// Власник автомобіля теж має бути обєкт, у якого є поля
+// Імя, вік, стаж водіння.
+// Створити не менше 7 та не більше 20 машинок.
+// Зробили половину автопарку ремонт мотору, що збільшить потужність автомобілів на 10% (переприсвоєння змінної потужності).
+// На відремонтовані автомобілі найняти нових водіїв (переприсвоїти змінну водій).
+// Для початку вкладіть всі наші створені автомобілі в масив cars.
+// Далі необхідно рати кожну другу машинку (цикл з кроком в 2), та робити їй підвищення потужності двигуна на 10% та ціну на 5%
+// Після того зробити перевірку досвіду ВСІХ наших водіїв. Якщо досвід водія менший за 5 років, але його вік більший за 25, то необідно відправити його на курси підвищення кваліфікації, що збільшить йому досвід на 1 рік.
+// Також спробуйте порахувати суму, яку потрібно потратити для покупки всіх цих авто в циклі
