@@ -147,15 +147,21 @@ console.log(usersWithAddress.filter(value => value.address.number % 2 === 0));
 //Створити обєкт автомобіля з полями:
 // Марка автомобля, потужність двигуна, власник, ціна, рік випуску.
 class Auto {
-    constructor(producer, power, owner, price, year) {
+    constructor(producer, power, price, year, owner) {
        this.producer = producer;
        this.power = power;
-       this.owner = owner;
        this.price = price;
        this.year = year;
+       this.owner = owner;
     }
 }
-let auto1 = new Auto('subaru',2.0,{name: 'vasya', age: 20, exp: 2});
+let auto1 = new Auto('mercedes', 200, 8000, 2011,{name:'olga', age:26, experience:5});
+let auto2 = new Auto('bmw', 250, 12000, 2015,{name:'vasya',age: 28,experience:6});
+let auto3 = new Auto('audi', 230, 9500, 2013, {name:'oleg', age:29,experience:7});
+let auto4 = new Auto('subaru', 300, 17000, 2016,{name:'sasha',age:29,experience:8});
+let auto5 = new Auto('mercedes', 300, 16500, 2014,{name: 'vasya', age: 20, exp: 2});
+let auto6 = new Auto('toyota', 220, 9500, 2014,{name: 'vasya', age: 20, exp: 2});
+let auto7 = new Auto('mercedes', 180, 7000, 2008,{name: 'vasya', age: 20, exp: 2});
 // Власник автомобіля теж має бути обєкт, у якого є поля
 // Імя, вік, стаж водіння.
 // Створити не менше 7 та не більше 20 машинок.
