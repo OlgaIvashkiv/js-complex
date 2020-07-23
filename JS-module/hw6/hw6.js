@@ -155,19 +155,75 @@ class Auto {
        this.owner = owner;
     }
 }
-let auto1 = new Auto('mercedes', 200, 8000, 2011,{name:'olga', age:26, experience:5});
+let auto1 = new Auto('mercedes', 200, 8000, 2011,{name:'olga', age:26, experience:4});
 let auto2 = new Auto('bmw', 250, 12000, 2015,{name:'vasya',age: 28,experience:6});
 let auto3 = new Auto('audi', 230, 9500, 2013, {name:'oleg', age:29,experience:7});
 let auto4 = new Auto('subaru', 300, 17000, 2016,{name:'sasha',age:29,experience:8});
-let auto5 = new Auto('mercedes', 300, 16500, 2014,{name: 'vasya', age: 20, exp: 2});
-let auto6 = new Auto('toyota', 220, 9500, 2014,{name: 'vasya', age: 20, exp: 2});
-let auto7 = new Auto('mercedes', 180, 7000, 2008,{name: 'vasya', age: 20, exp: 2});
+let auto5 = new Auto('mercedes', 300, 16500, 2014,{name:'serg',age:33,experience:9});
+let auto6 = new Auto('toyota', 220, 9500, 2014,{name: 'vasya', age: 20, experience: 2});
+let auto7 = new Auto('mercedes', 180, 7000, 2008,{name: 'max', age: 25, experience: 5});
+let autosArray = [auto1,auto2,auto3,auto4,auto5,auto6,auto7];
+
+
 // Власник автомобіля теж має бути обєкт, у якого є поля
 // Імя, вік, стаж водіння.
 // Створити не менше 7 та не більше 20 машинок.
 // Зробили половину автопарку ремонт мотору, що збільшить потужність автомобілів на 10% (переприсвоєння змінної потужності).
+
+for (let i = 0; i < autosArray.length; i+=2) {
+    const auto = autosArray[i];
+    auto.power += auto.power*0.1
+}
+console.log(autosArray);
+
+
 // На відремонтовані автомобілі найняти нових водіїв (переприсвоїти змінну водій).
+
 // Для початку вкладіть всі наші створені автомобілі в масив cars.
-// Далі необхідно рати кожну другу машинку (цикл з кроком в 2), та робити їй підвищення потужності двигуна на 10% та ціну на 5%
-// Після того зробити перевірку досвіду ВСІХ наших водіїв. Якщо досвід водія менший за 5 років, але його вік більший за 25, то необідно відправити його на курси підвищення кваліфікації, що збільшить йому досвід на 1 рік.
+// Далі необхідно рати кожну другу машинку (цикл з кроком в 2), та робити їй підвищення потужності двигуна на 10%
+// та ціну на 5%
+for (let i = 0; i < autosArray.length; i+=2) {
+    const auto = autosArray[i];
+    auto.power += auto.power*0.1
+    auto.price += auto.price*0.05
+}
+console.log(autosArray);
+
+// Після того зробити перевірку досвіду ВСІХ наших водіїв. Якщо досвід водія менший за 5 років,
+// але його вік більший за 25, то необідно відправити його на курси підвищення кваліфікації,
+// що збільшить йому досвід на 1 рік.
+autosArray.forEach((value) => {
+    if(value.owner.experience < 5 && value.owner.age > 25){
+        value.owner.experience++
+    }
+});
+console.log(autosArray);
+
+
 // Також спробуйте порахувати суму, яку потрібно потратити для покупки всіх цих авто в циклі
+let priceSum = [];
+autosArray.forEach(value => {
+    priceSum.push(value.price)
+})
+console.log(priceSum)
+console.log(priceSum.reduce((previousValue, currentValue) => previousValue + currentValue));
+
+//Задача: дан отсортированный по возрастанию массив целых чисел. Необходимо вернуть наименьший и наибольший индекс заданного элемента.
+// Входные данные: arr — массив целых чисел значения которых по модулю не больше 10. Размер массива не более 10 элементов.
+// Вывод: наибольший и наименьший индекс в массиве заданного элемента. Если такого элемента нет в массиве, выведите -1.
+//
+// Пример:
+// Arr = [1, 2, 3, 4, 4, 4, 4, 7, 7, 9, 14]
+// 1. Key = 1
+// Answer: MinIndex = 0, MaxIndex = 0.
+// 2. Key = 4
+// Answer: MinIndex = 3, MaxIndex = 6.
+
+let arr = [1, 2, 3, 4, 4, 4, 4, 7, 7, 9, 14];
+function minAndMaxIndex(array,el) {
+    let min = array.indexOf(el);
+    let max = array.lastIndexOf(el);
+    console.log(`Answer: MinIndex = ${min}, MaxIndex = ${max}`)
+}
+
+minAndMaxIndex(arr,7)
