@@ -151,4 +151,76 @@ tableBtn.onclick=()=>{
 
 
 
-//
+//- Сворити масив не цензцрних слів.
+// Сворити інпут текстового типу.
+// Якщо людина вводить слово і воно міститься в масиві не цензурних слів
+// кинути алерт з попередженням.
+// Перевірку робити при натисканні на кнопку
+let uncensoredArray = ['blya','suka','pots','pridurok', 'durak'];
+let uncensoredInput = document.getElementById('uncensoredInput');
+let uncensoredBtn = document.getElementById('uncensoredBtn');
+
+uncensoredBtn.onclick=()=>{
+    for (const word of uncensoredArray) {
+        if (uncensoredInput.value === word){
+            alert('Warning!!!')
+        }
+    }
+}
+
+//Сворити масив не цензцрних слів.
+// Сворити інпут текстового типу.
+// Потрібно перевіряти чи не містить ціле речення в собі погані слова.
+// Кинути алерт з попередженням у випадку якщо містить.
+// Перевірку робити при натисканні на кнопку
+let uncensoredInput2 = document.getElementById('uncensoredInput2');
+let uncensoredBtn2 = document.getElementById('uncensoredBtn2');
+
+uncensoredBtn2.onclick=()=>{
+    for (const word of uncensoredArray) {
+        if (uncensoredInput2.value.includes(word)){
+            alert('Warning!!!')
+        }
+    }
+}
+
+//создать скрипт, который берет считывает на странице (rules.html)
+// текст и делает сбоку меню-оглавление по всем заголовкам которые есть в тексте.
+// При клике на пункт оглавления вы должны отправляться к этому пункту в тексте
+
+let h2 = document.getElementsByTagName('h2');
+let contentDiv = document.getElementById('content');
+let ul = document.createElement('ul');
+
+for (let i = 0; i < h2.length; i++) {
+    let li = document.createElement('li');
+    let a = document.createElement('a');
+    let r = 'r'+ (i+1);
+    a.href = '#'+ r
+    h2[i].setAttribute('id', r);
+    a.innerHTML = h2[i].innerText;
+    li.appendChild(a)
+    ul.appendChild(li)
+}
+contentDiv.appendChild(ul);
+
+
+let usersWithAddress = [
+                {id:1,name: 'vasya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 16}},
+                {id:2,name: 'petya', age: 30, status: true, address: {city: 'Kyiv', street: 'Shevchenko', number: 1}},
+                {id:3,name: 'kolya', age: 29, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 121}},
+                {id:4,name: 'olya', age: 28, status: false, address: {city: 'Ternopil', street: 'Shevchenko', number: 90}},
+                {id:5,name: 'max', age: 30, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 115}},
+                {id:6,name: 'anya', age: 31, status: false, address: {city: 'Kyiv', street: 'Shevchenko', number: 2}},
+                {id:7,name: 'oleg', age: 28, status: false, address: {city: 'Ternopil', street: 'Shevchenko', number: 22}},
+                {id:8,name: 'andrey', age: 29, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 43}},
+                {id:9,name: 'masha', age: 30, status: true, address: {city: 'Kyiv', street: 'Shevchenko', number: 12}},
+                {id:10,name: 'olya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 16}},
+                {id:11,name: 'max', age: 31, status: true, address: {city: 'Ternopil', street: 'Shevchenko', number: 121}}
+            ];
+// Создать три чекбокса. Каждый из них активирует фильтр для вышеуказаного массива.
+// Фильтры могут работать как вместе так и по отдельности.
+// 1й - отфильтровывает пользователей со статусом false (осталяет со статусом false)
+// 2й - оставляет старше 29 лет включительно
+// 3й - оставляет тех у кого город киев
+// Данные выводить в документ
