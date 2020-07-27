@@ -221,6 +221,36 @@ let usersWithAddress = [
 // Создать три чекбокса. Каждый из них активирует фильтр для вышеуказаного массива.
 // Фильтры могут работать как вместе так и по отдельности.
 // 1й - отфильтровывает пользователей со статусом false (осталяет со статусом false)
+let usersArrayDiv = document.getElementById('usersArrayDiv');
+function filterUsers(array){
+    usersArrayDiv.innerText = ''
+    for (const user of array) {
+        let userDiv = document.createElement('div');
+        userDiv.innerText = JSON.stringify(user);
+        usersArrayDiv.appendChild(userDiv);
+    }
+}
+filterUsers(usersWithAddress)
+
+
+let cbox1 = document.formCbox.cbox1;
+let cbox2 = formCbox.cbox2;
+let cbox3 = formCbox.cbox3;
+
+cbox1.onclick=()=>{
+    cbox1.checked ?
+        filterUsers(usersWithAddress.filter(value => !value.status))
+        :filterUsers(usersWithAddress)
+}
 // 2й - оставляет старше 29 лет включительно
+cbox2.onclick=()=>{
+    cbox2.checked? filterUsers(usersWithAddress.filter(value => value.age>29))
+        : filterUsers(usersWithAddress)
+}
+
 // 3й - оставляет тех у кого город киев
-// Данные выводить в документ
+cbox3.onclick=()=>{
+    cbox3.checked?
+        filterUsers(usersWithAddress.filter(value => value.address.city === 'Kyiv'))
+        : filterUsers(usersWithAddress)
+}
