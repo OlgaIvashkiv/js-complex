@@ -145,11 +145,54 @@ tableBtn.onclick=()=>{
 }
 
 //Напишите «Карусель» – ленту изображений, которую можно листать влево-вправо нажатием на стрелочки.
+// let imgArray = [
+//     {id:1, img_url: 'JS-module/hw7/images/img1.jpg'},
+//     {id:2, img_url: 'JS-module/hw7/images/img2.jpg'},
+//     {id:3, img_url: 'JS-module/hw7/images/img3.jpg'},
+//     {id:4, img_url: 'JS-module/hw7/images/img4.jpg'},
+//     {id:5, img_url: 'JS-module/hw7/images/img5.jpg'},
+//     {id:6, img_url: 'JS-module/hw7/images/img6.jpg'}
+// ];
+let imgArray = [
+    {id:1, img_url: 'C:\\Users\\Асус\\WebstormProjects\\js-complex\\JS-module\\hw7\\images\\img1.jpg'},
+    {id:2, img_url: 'C:\\Users\\Асус\\WebstormProjects\\js-complex\\JS-module\\hw7\\images\\img2.jpg'},
+    {id:3, img_url: 'C:\\Users\\Асус\\WebstormProjects\\js-complex\\JS-module\\hw7\\images\\img3.jpg'},
+    {id:4, img_url: 'C:\\Users\\Асус\\WebstormProjects\\js-complex\\JS-module\\hw7\\images\\img4.jpg'},
+    {id:5, img_url: 'C:\\Users\\Асус\\WebstormProjects\\js-complex\\JS-module\\hw7\\images\\img5.jpg'},
+    {id:6, img_url: 'C:\\Users\\Асус\\WebstormProjects\\js-complex\\JS-module\\hw7\\images\\img6.jpg'}
+];
 
+let img = document.createElement('img');
+let btnLeft = document.createElement('button');
+let btnRight = document.createElement('button');
 
+btnLeft.innerText = '<<<';
+btnRight.innerText = '>>>';
 
+let index = 0;
+img.maxWidth = '170px';
+img.src = imgArray[index].img_url;
 
+let contentDiv = document.getElementById('content')
+contentDiv.appendChild(img);
+contentDiv.appendChild(btnLeft);
+contentDiv.appendChild(btnRight);
 
+btnLeft.onclick=()=>{
+   index-1 < 0
+    ? index = imgArray.length-1
+       : index = index-1
+
+    img.src = imgArray[index].img_url;
+}
+
+btnRight.onclick=()=>{
+   index+1 > imgArray.length-1
+    ? index = 0
+       : index = index+1
+
+    img.src = imgArray[index].img_url;
+}
 
 //- Сворити масив не цензцрних слів.
 // Сворити інпут текстового типу.
@@ -189,7 +232,6 @@ uncensoredBtn2.onclick=()=>{
 // При клике на пункт оглавления вы должны отправляться к этому пункту в тексте
 
 let h2 = document.getElementsByTagName('h2');
-let contentDiv = document.getElementById('content');
 let ul = document.createElement('ul');
 
 for (let i = 0; i < h2.length; i++) {
