@@ -47,6 +47,39 @@ let btnRight = document.getElementById('btnRight');
 let saveBtn = document.getElementById('saveBtn');
 
 saveBtn.onclick=()=>{
-    localStorage.setItem(localStorage.length+1,textarea1.value);
+    localStorage.setItem(localStorage.length+1,textarea2.value);
 }
 
+btnLeft.onclick=()=>{
+    btnRight.style.visibility = 'visible';
+    let index = 0;
+    for (const key in localStorage) {
+        if (localStorage.hasOwnProperty(key)){
+            if (localStorage.getItem(key) === textarea2.value){
+                index=key
+            }
+        }
+    }
+    if (index==='1'){
+        btnLeft.style.visibility = 'hidden';
+        return
+    }
+    textarea2.value = localStorage.getItem(index-1);
+}
+
+btnRight.onclick=()=>{
+    btnLeft.style.visibility = 'visible';
+    let index = 0;
+    for (const key in localStorage) {
+        if (localStorage.hasOwnProperty(key)){
+            if (localStorage.getItem(key) === textarea2.value){
+                index = key;
+            }
+        }
+    }
+    if (index = localStorage.toString()){
+        btnRight.style.visibility = 'hidden'
+        return
+    }
+    textarea2.value = localStorage.getItem(+index+1)
+}
