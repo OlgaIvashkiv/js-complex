@@ -1,9 +1,9 @@
 //Task 1
-function userCard(number) {
+function UserCard(number) {
     let balance = 100;
     let transactionLimit =100;
     const historyLogs = [];
-    let key = number <= 3 && number >=1 ? number : 'Key not valid';
+    const key = number <= 3 && number >=1 ? number : 'Key not valid';
 
     function getCardOptions(){
        return {balance, transactionLimit, historyLogs, key}
@@ -59,8 +59,8 @@ function userCard(number) {
 
 }
 
-const card1 = userCard(3);
-const card2 = userCard(2);
+const card1 = new UserCard(1);
+const card2 = new UserCard(2);
 
 console.log(card1.getCardOptions());
 card1.putCredits(200);
@@ -72,8 +72,42 @@ console.log(card1.getCardOptions());
 console.log('---------------');
 console.log(card2.getCardOptions());
 
+//Task 2
+class UserAccount{
+    constructor(name){
+        this.name = name;
+        this.card = [];
+    }
+    addCard(){
+        if (this.card.length < 3){
+            this.card.push(new UserCard(this.card.length+1))
+        } else {
+            console.error('Card limit is over')
+        }
 
+    }
+    getCardByKey(number){
+        return this.card.find(value => value.getCardOptions().key === number)
+    }
+}
 
+const user1 = new UserAccount('Olga');
+const user2 = new UserAccount('Tania');
+console.log(user1);
+user1.addCard();
+user1.addCard();
+user1.addCard();
 
+let user1Card1 = user1.getCardByKey(1);
+console.log(user1Card1.getCardOptions());
 
+user2.addCard();
+user2.addCard();
+user2.addCard();
+
+let user2Card1 = user2.getCardByKey(1);
+user1Card1.putCredits(1000);
+user1Card1.transferCredits(100, user2Card1);
+console.log(user1Card1.getCardOptions());
+console.log(user2Card1.getCardOptions());
 
