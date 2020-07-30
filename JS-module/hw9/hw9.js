@@ -79,7 +79,7 @@
 function wakeUp(time){
     return new Promise((resolve, reject)=>{
         setTimeout(()=>{
-            time<=8.00? resolve('You woke up on time') : reject('You slept too much. You are late for work')
+            +time<=8.00? resolve('You woke up on time') : reject('You slept too much. You are late for work')
         },1000)
     })
 }
@@ -103,7 +103,7 @@ function brushTeeth(isWater) {
 function roadToWork(fuel) {
     return new Promise((resolve, reject) => {
         setTimeout(()=>{
-        fuel >= 5 ? resolve ('You have enough fuel to get to work') : reject('You are out of patrol')
+        +fuel >= 5 ? resolve ('You have enough fuel to get to work') : reject('You are out of patrol')
         }, 2000)
     })
 }
@@ -132,33 +132,55 @@ function eatSupper(foodInFridge) {
     })
 }
 
-wakeUp(7.45)
-    .then(value => {
-        console.log(value);
-        return eatBreakfast(true)
-    })
-    .then(value => {
-        console.log(value);
-        return brushTeeth(true)
-    })
-    .then(value => {
-        console.log(value);
-        return  roadToWork(15)
-    })
-    .then(value => {
-        console.log(value);
-        return coffeeBreak('yes')
-    })
-    .then(value => {
-        console.log(value);
-        return finishWorking(true)
-    })
-    .then(value => {
-        console.log(value);
-        return eatSupper(true)
-    })
-    .catch(reason => {
-        console.error('You fail!!!!!! ' + reason)
-    })
+// wakeUp(7.45)
+//     .then(value => {
+//         console.log(value);
+//         return eatBreakfast(true)
+//     })
+//     .then(value => {
+//         console.log(value);
+//         return brushTeeth(true)
+//     })
+//     .then(value => {
+//         console.log(value);
+//         return  roadToWork(15)
+//     })
+//     .then(value => {
+//         console.log(value);
+//         return coffeeBreak('yes')
+//     })
+//     .then(value => {
+//         console.log(value);
+//         return finishWorking(true)
+//     })
+//     .then(value => {
+//         console.log(value);
+//         return eatSupper(true)
+//     })
+//     .catch(reason => {
+//         console.error('You fail!!!!!! ' + reason)
+//     })
 
+async function dayOfOlga() {
+    try {
+        let wake = await wakeUp('6.30');
+        console.log(wake);
+        let breakfast = await eatBreakfast(true);
+        console.log(breakfast);
+        let teeth = await brushTeeth(true);
+        console.log(teeth);
+        let road = await roadToWork(6);
+        console.log(road);
+        let coffee = await coffeeBreak('no');
+        console.log(coffee);
+        let finished = await finishWorking(true);
+        console.log(finished);
+        let supper = await eatSupper(true);
+        console.log(supper);
+    }
+    catch (e) {
+        console.error(e)
+    }
+}
 
+dayOfOlga()
