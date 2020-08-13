@@ -76,8 +76,13 @@ LIMIT 1;
 
 
 # 15. Вивести відділення, яке видало в кредити найбільше грошей
-#
-#
+SELECT DepartmentCity, SUM(Sum) SumOfCredit, idDepartment FROM client c
+JOIN department d on d.idDepartment = c.Department_idDepartment
+JOIN application a on c.idClient = a.Client_idClient
+GROUP BY idDepartment
+ORDER BY SumOfCredit DESC
+LIMIT 1;
+
 # 16. Вивести відділення, яке видало найбільший кредит.
 #
 #
