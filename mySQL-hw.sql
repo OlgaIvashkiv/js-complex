@@ -84,8 +84,12 @@ ORDER BY SumOfCredit DESC
 LIMIT 1;
 
 # 16. Вивести відділення, яке видало найбільший кредит.
-#
-#
+SELECT DepartmentCity, MAX(Sum), idDepartment FROM client c
+JOIN application a on c.idClient = a.Client_idClient
+JOIN department d on d.idDepartment = c.Department_idDepartment
+GROUP BY idDepartment
+LIMIT 1;
+
 # 17. Усім клієнтам, які мають вищу освіту, встановити усі їхні кредити у розмірі 6000 грн.
 #
 # 18. Усіх клієнтів київських відділень пересилити до Києва.
