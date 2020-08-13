@@ -68,6 +68,11 @@ WHERE c.Education = 'high'
 GROUP BY c.idClient;
 
 # 14. Вивести дані про клієнта, в якого середня сума кредитів найвища.
+SELECT *, AVG(Sum) AvgSum FROM application
+JOIN client c on c.idClient = application.Client_idClient
+GROUP BY Client_idClient
+ORDER BY AvgSum DESC
+LIMIT 1;
 
 
 # 15. Вивести відділення, яке видало в кредити найбільше грошей
