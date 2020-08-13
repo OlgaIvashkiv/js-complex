@@ -51,6 +51,23 @@ WHERE c.Education = 'high'
 GROUP BY c.idClient;
 
 # 14. Вивести дані про клієнта, в якого середня сума кредитів найвища.
+SELECT *, AVG(Sum) AvgSum FROM application
+JOIN client c on c.idClient = application.Client_idClient
+GROUP BY Client_idClient
+ORDER BY AvgSum DESC
+LIMIT 1;
+
+# 12. Визначити найбільший та найменший кредити.
+SELECT MAX(Sum) FROM application;
+SELECT MIN(Sum) FROM application;
+
+# 13. Порахувати кількість кредитів для клієнтів,які мають вищу освіту.
+SELECT COUNT(Client_idClient) AmountOfCredits,Client_idClient ClientId FROM application
+JOIN client c on c.idClient = application.Client_idClient
+WHERE c.Education = 'high'
+GROUP BY c.idClient;
+
+# 14. Вивести дані про клієнта, в якого середня сума кредитів найвища.
 
 
 # 15. Вивести відділення, яке видало в кредити найбільше грошей
