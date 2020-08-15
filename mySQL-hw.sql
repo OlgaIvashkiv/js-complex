@@ -91,10 +91,15 @@ GROUP BY idDepartment
 LIMIT 1;
 
 # 17. Усім клієнтам, які мають вищу освіту, встановити усі їхні кредити у розмірі 6000 грн.
-#
+UPDATE client c
+JOIN application a ON c.idClient = a.Client_idClient
+SET Sum = 6000, Currency = 'Gryvnia' WHERE Education = 'high';
+
 # 18. Усіх клієнтів київських відділень пересилити до Києва.
-#
-#
+UPDATE client c
+JOIN department d on d.idDepartment = c.Department_idDepartment
+SET City = 'Kyiv' WHERE DepartmentCity = 'Kyiv';
+
 # 19. Видалити усі кредити, які є повернені.
 #
 #
