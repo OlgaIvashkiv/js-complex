@@ -101,7 +101,14 @@ JOIN department d on d.idDepartment = c.Department_idDepartment
 SET City = 'Kyiv' WHERE DepartmentCity = 'Kyiv';
 
 # 19. Видалити усі кредити, які є повернені.
-#
-#
-#
+DELETE FROM application WHERE CreditState = 'Returned';
+
 # 20. Видалити кредити клієнтів, в яких друга літера прізвища є голосною.
+DELETE FROM application
+WHERE Client_idClient IN (select idClient from client
+                               WHERE LastName LIKE '_a%'
+                                OR LastName LIKE '_o%'
+                                OR LastName LIKE '_e%'
+                                OR LastName LIKE '_u%'
+                                OR LastName LIKE '_i%');
+                                
