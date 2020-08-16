@@ -127,3 +127,25 @@ JOIN client c on c.idClient = a.Client_idClient
 WHERE CreditState = 'Returned'
 GROUP BY Client_idClient
 HAVING SUM(Sum) > 5000;
+
+# /* Знайти максимальний неповернений кредит.*/
+SELECT Client_idClient clientId, Sum SumOfCredit FROM application
+WHERE CreditState = 'Not returned'
+GROUP BY Client_idClient
+ORDER BY SUM(Sum) DESC
+LIMIT 1;
+
+# /*Знайти клієнта, сума кредиту якого найменша*/
+SELECT Client_idClient, FirstName, LastName, SUM(Sum) TotalSumOfCredits FROM application a
+JOIN client c on c.idClient = a.Client_idClient
+GROUP BY Client_idClient
+ORDER BY SUM(Sum)
+LIMIT 1;
+
+# /*Знайти кредити, сума яких більша за середнє значення усіх кредитів*/
+SELECT Client_idClient Client, FirstName, LastName, SUM(Sum) TotalSumOfCredits FROM application a
+JOIN client c on c.idClient = a.Client_idClient
+GROUP BY Client_idClient
+HAVING SUM(Sum) > AVG(Sum)
+ORDER BY SUM(Sum);
+
