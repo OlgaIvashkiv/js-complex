@@ -112,3 +112,18 @@ WHERE Client_idClient IN (select idClient from client
                                 OR LastName LIKE '_u%'
                                 OR LastName LIKE '_i%');
                                 
+# Знайти львівські відділення, які видали кредитів на загальну суму більше ніж 5000
+SELECT DepartmentCity, idDepartment, SUM(Sum) TotalSum FROM client c
+JOIN department d on d.idDepartment = c.Department_idDepartment
+JOIN application a on c.idClient = a.Client_idClient
+WHERE Department_idDepartment IN (SELECT idDepartment FROM department
+    WHERE DepartmentCity = 'Lviv')
+GROUP BY idDepartment
+HAVING SUM(Sum) > 5000;
+
+# Знайти клієнтів, які повністю погасили кредити на суму більше ніж 5000
+SELECT Client_idClient, FirstName, LastName, SUM(Sum) TotalSumOfCredits FROM application a
+JOIN client c on c.idClient = a.Client_idClient
+WHERE CreditState = 'Returned'
+GROUP BY Client_idClient
+HAVING SUM(Sum) > 5000;
