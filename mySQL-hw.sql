@@ -149,3 +149,19 @@ GROUP BY Client_idClient
 HAVING SUM(Sum) > AVG(Sum)
 ORDER BY SUM(Sum);
 
+# /*Знайти клієнтів, які є з того самого міста, що і клієнт, який взяв найбільшу кількість кредитів*/
+SELECT * FROM client
+WHERE City = (SELECT City FROM (
+                        SELECT *, COUNT(Client_idClient) NumberOfCredits, Client_idClient id FROM application a
+                        JOIN client c ON a.Client_idClient = c.idClient
+                        GROUP BY id
+                        ORDER BY NumberOfCredits DESC LIMIT 1) temptable
+                                 WHERE id=idClient);
+
+
+# #місто чувака який набрав найбільше кредитів
+SELECT City, COUNT(Sum) NumberOfCredits FROM application a
+JOIN client c on c.idClient = a.Client_idClient
+GROUP BY Client_idClient
+ORDER BY COUNT(Sum) DESC
+LIMIT 1;
