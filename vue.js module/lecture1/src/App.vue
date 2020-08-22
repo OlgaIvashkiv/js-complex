@@ -1,28 +1,42 @@
 <template>
   <div>
-  <h1>{{message}}</h1>
+    <input type="text" v-model="text">
+    <button @click="addList" v-if="arr.length<=10">Add</button>
+
+    <ul>
+      <li v-for="(item, i) in arr"
+          :key="i"
+      >
+        {{item}}
+      <button @click="removeList(i)">Remove</button>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'App',
 
   data(){
-    message: 'Hello World'
+    return{
+        arr:[],
+        text:'',
+    }
+  },
+  methods:{
+      addList(){
+        this.arr.push(this.text)
+      },
+      removeList(i){
+          this.arr.splice(i,1)
+      }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
