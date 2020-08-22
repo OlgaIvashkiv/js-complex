@@ -1,7 +1,7 @@
 <template>
   <div>
     <input type="text" v-model="text">
-    <button @click="addList" v-if="arr.length<=10">Add</button>
+    <button @click="addList" v-if="arr.length<10">Add</button>
 
     <ul>
       <li v-for="(item, i) in arr"
