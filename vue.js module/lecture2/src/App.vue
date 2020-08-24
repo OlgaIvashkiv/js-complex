@@ -1,9 +1,13 @@
 <template>
   <div>
   <AddToDo
+          :arr="arr"
       @addToDoItem="addToDoItem"
   />
-  <ToDoList :arr="arr"/>
+  <ToDoList
+          :arr="arr"
+          @removeToDo="removeToDo"
+  />
   </div>
 </template>
 
@@ -27,6 +31,10 @@ components:{
   methods:{
     addToDoItem(text){
       this.arr.push(text)
+
+    },
+    removeToDo(arrItem){
+      this.arr.splice(arrItem,1)
     }
   }
 }
