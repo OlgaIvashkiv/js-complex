@@ -1,9 +1,21 @@
 <template>
-    <div></div>
+    <div>
+        <ul>
+            <li>
+                {{item}}
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
     export default {
-        name: 'ToDoItem'
+        name: 'ToDoItem',
+        props:{
+            item:{
+                type: String,
+                required: true
+            }
+        }
     }
 </script>

@@ -1,7 +1,9 @@
 <template>
   <div>
-  <AddToDo/>
-  <ToDoList/>
+  <AddToDo
+      @addToDoItem="addToDoItem"
+  />
+  <ToDoList :arr="arr"/>
   </div>
 </template>
 
@@ -16,7 +18,17 @@ export default {
 components:{
   AddToDo,
   ToDoList
-}
+  },
+  data(){
+    return {
+      arr:[]
+    }
+  },
+  methods:{
+    addToDoItem(text){
+      this.arr.push(text)
+    }
+  }
 }
 </script>
 
