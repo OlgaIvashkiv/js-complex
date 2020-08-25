@@ -2,8 +2,8 @@
     <div>
         <ul>
             <li>
-                {{arrItem}}
-                <button @click="removeItem(arrItem)">Remove</button>
+                {{item}}
+                <button @click="removeItem(item)">Remove</button>
             </li>
         </ul>
     </div>
@@ -18,14 +18,10 @@
                 required: true
             }
         },
-        data(){
-            return{
-                arrItem: this.item
-            }
-        },
+
         methods:{
-            removeItem(arrItem){
-                this.$emit('removeToDoItem', arrItem)
+            removeItem(item){
+                this.$emit('removeToDoItem', item)
             }
         }
     }

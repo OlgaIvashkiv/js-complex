@@ -23,8 +23,9 @@
             }
         },
         methods:{
-            removeToDoItem(arrItem){
-                this.$emit('removeToDo', arrItem)
+            removeToDoItem(item){
+
+                this.$emit('removeToDo', item)
             }
         }
     }

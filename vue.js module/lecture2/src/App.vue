@@ -25,7 +25,8 @@ components:{
   },
   data(){
     return {
-      arr:[]
+      arr:[],
+      item:''
     }
   },
   methods:{
@@ -33,8 +34,9 @@ components:{
       this.arr.push(text)
 
     },
-    removeToDo(arrItem){
-      this.arr.splice(arrItem,1)
+    removeToDo(item){
+        const idx = this.arr.findIndex(e => e === item);
+        this.arr.splice(idx, 1)
     }
   }
 }
