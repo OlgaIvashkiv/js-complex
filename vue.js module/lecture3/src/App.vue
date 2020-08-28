@@ -1,7 +1,14 @@
 <template>
   <div>
-    <input type="text" v-model="text">
-    <button @click="submitToDo">AddToDo to DB</button>
+    <input type="text" v-model="todo.text">
+    <button @click="submitDataToDB">SubmitToDB</button>
+    <ul>
+      <li v-for="(item, i) in list" :key="i">
+        ID: {{item.id}} - text: {{item.text}}
+        <button @click="removeToDo">Remove</button>
+      </li>
+
+    </ul>
   </div>
 </template>
 
@@ -10,20 +17,58 @@
 
 export default {
   name: 'App',
-  data(){
-    return{
-      text: {}
+  data() {
+    return {
+      todo: {
+        text:''
+      },
+      list: []
     }
   },
   methods:{
-    submitToDo(){
-      this.$http.post('https://vue-js-module-http.firebaseio.com/toDoList.json',this.text)
-              .then((res)=>{
-                console.log(res)
-              })
-    }
+    submitDataToDB(){
+      console.log(this.todo)
+      this.$http.post('https://vue-js-module-http.firebaseio.com/toDoList.json', this.todo)
+    },
+
+    async removeToDo(){
+      try {
+        await this.$http.delete(`https://vue-js-module-http.firebaseio.com/toDoList.json/${item.id}.json`)
+
+      } catch (e) {
+        console.log(e)
+      } finally {
+        this.list = [];
+        this.$http.get('https://vue-js-module-http.firebaseio.com/toDoList.json')
+                .then((res)=> {
+                  return res.json()
+                })
+                .then((res)=>{
+                  console.log(res)
+                  for (const key in res) {
+                    this.list.push({id: key, ...res[key]})
+                  }
+                })
+      }
+      }
+
+
+  },
+  beforeMount() {
+    this.$http.get('https://vue-js-module-http.firebaseio.com/toDoList.json')
+            .then((res)=> {
+              return res.json()
+            })
+            .then((res)=>{
+              console.log(res)
+              for (const key in res) {
+                this.list.push({id: key, ...res[key]})
+              }
+            })
   }
 }
+
+
 </script>
 
 <style>
