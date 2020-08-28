@@ -5,7 +5,7 @@
     <ul>
       <li v-for="(item, i) in list" :key="i">
         ID: {{item.id}} - text: {{item.text}}
-        <button @click="removeToDo">Remove</button>
+        <button @click="removeToDo(item.id)">Remove</button>
       </li>
 
     </ul>
@@ -31,9 +31,9 @@ export default {
       this.$http.post('https://vue-js-module-http.firebaseio.com/toDoList.json', this.todo)
     },
 
-    async removeToDo(){
+    async removeToDo(event){
       try {
-        await this.$http.delete(`https://vue-js-module-http.firebaseio.com/toDoList.json/${item.id}.json`)
+        await this.$http.delete(`https://vue-js-module-http.firebaseio.com/toDoList/${event}.json`)
 
       } catch (e) {
         console.log(e)
