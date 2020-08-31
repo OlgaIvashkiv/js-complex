@@ -29,19 +29,8 @@
             }
         },
         methods:{
-            submitDataToDB(){
-                console.log(this.todo)
-                this.$http.post('https://vue-js-module-http.firebaseio.com/toDoList.json', this.todo)
-            },
-
-            async removeToDo(event){
+            async getDataFromDB(){
                 try {
-                    await this.$http.delete(`https://vue-js-module-http.firebaseio.com/toDoList/${event}.json`)
-
-                } catch (e) {
-                    console.log(e)
-                } finally {
-                    this.list = [];
                     this.$http.get('https://vue-js-module-http.firebaseio.com/toDoList.json')
                         .then((res)=> {
                             return res.json()
@@ -52,22 +41,35 @@
                                 this.list.push({id: key, ...res[key]})
                             }
                         })
+                } catch (e){
+                    console.log(e)
+                }
+            },
+            async submitDataToDB(){
+                try {
+                    console.log(this.todo)
+                    this.$http.post('https://vue-js-module-http.firebaseio.com/toDoList.json', this.todo)
+                } catch (e){
+                    console.log(e)
+                }
+            },
+
+            async removeToDo(event){
+                try {
+                    await this.$http.delete(`https://vue-js-module-http.firebaseio.com/toDoList/${event}.json`)
+
+                } catch (e) {
+                    console.log(e)
+                } finally {
+                    this.list = [];
+                    this.getDataFromDB()
                 }
             }
 
 
         },
         beforeMount() {
-            this.$http.get('https://vue-js-module-http.firebaseio.com/toDoList.json')
-                .then((res)=> {
-                    return res.json()
-                })
-                .then((res)=>{
-                    console.log(res)
-                    for (const key in res) {
-                        this.list.push({id: key, ...res[key]})
-                    }
-                })
+            this.getDataFromDB()
         }
     }
 </script>
