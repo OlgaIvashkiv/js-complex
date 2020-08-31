@@ -48,7 +48,7 @@
             async submitDataToDB(){
                 try {
                     console.log(this.todo)
-                    this.$http.post('https://vue-js-module-http.firebaseio.com/toDoList.json', this.todo)
+                   await this.$http.post('https://vue-js-module-http.firebaseio.com/toDoList.json', this.todo)
                 } catch (e){
                     console.log(e)
                 }
