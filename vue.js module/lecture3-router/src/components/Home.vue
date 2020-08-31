@@ -10,7 +10,7 @@
 
 <script>
 
-    const imgLink = require('../../public/leaf-logo.jpg');
+    const imgLink = require('../assets/leaf-logo.jpg');
 
     export default {
         name: 'Home',
