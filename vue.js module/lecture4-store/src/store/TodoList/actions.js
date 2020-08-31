@@ -1,4 +1,4 @@
-import {ADD_TODO, GET_TODO, REMOVE_TODO, SET_TODO} from "./types";
+import {ADD_TODO, GET_TODO, PUSH_TODOS, REMOVE_TODO, SET_TODO} from "./types";
 import Vue from 'vue'
 
 export const actions ={
@@ -23,7 +23,7 @@ export const actions ={
                 todos.push({...body[item], id: item})
             }
 
-            commit(SET_TODO, todos)
+            commit(PUSH_TODOS, todos)
         } catch(e){
             console.log(e)
         }

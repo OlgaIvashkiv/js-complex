@@ -1,13 +1,10 @@
 <template>
     <div>
-        <ul>
-            <li v-for="(item, i) in todolist" :key="i">
-                todo: {{item.text}}
-            <button @click="remove">Remove</button>
-            </li>
 
+       <p>todo: {{item.text}}
+           <button @click="remove(item.id)">Remove</button>
+       </p>
 
-        </ul>
     </div>
 </template>
 
@@ -17,12 +14,13 @@ import {todoListModule} from "../store/TodoList/todolist";
 import {createNamespacedHelpers} from "vuex";
 import {REMOVE_TODO} from "../store/TodoList/types";
 
+
 const {mapActions} = createNamespacedHelpers(todoListModule)
     export default {
         name: 'TodoItem',
         props: {
-            todolist:{
-                type:Array
+            item:{
+                type:Object
 
             }
         },
@@ -30,14 +28,17 @@ const {mapActions} = createNamespacedHelpers(todoListModule)
             ...mapActions({
                 removeTodo: REMOVE_TODO
             }),
-            async remove(){
+            async remove(id){
                 try {
-                    await this.removeTodo(this.item.id)
+                    console.log(id)
+                    await this.removeTodo(id)
+
                 }catch(e){
                     console.log(e)
                 }
 
             }
-        }
+        },
+
     }
 </script>

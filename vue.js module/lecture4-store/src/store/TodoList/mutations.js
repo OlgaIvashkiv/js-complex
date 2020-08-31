@@ -1,10 +1,10 @@
-import {REMOVE_TODO, SET_TODO} from "./types";
+import {REMOVE_TODO, SET_TODO, PUSH_TODOS} from "./types";
 
 export const mutations ={
     [SET_TODO]: (state, todoObj)=>{
         state.todo.push(todoObj);
     },
-    [SET_TODO]:(state, todos)=>{
+    [PUSH_TODOS]:(state, todos)=>{
         state.todo = todos
     },
     [REMOVE_TODO]:(state, id)=>{

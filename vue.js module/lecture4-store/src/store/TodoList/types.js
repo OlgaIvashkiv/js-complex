@@ -7,3 +7,4 @@ export const GET_TODO = 'GET_TODO';
 export const TODOS = 'TODOS';
 //MUTATIONS
 export const SET_TODO = 'SET_TODO';
+export const PUSH_TODOS = 'PUSH_TODOS'

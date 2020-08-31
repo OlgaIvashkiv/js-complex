@@ -1,8 +1,10 @@
 <template>
     <div>
-
-<!--            <li v-for="(item, i) in todolist" :key="i">-->
-                <TodoItem :todolist="todolist"/>
+        <ul>
+            <li v-for="(item, i) in todolist" :key="i">
+                <TodoItem :item="item"/>
+            </li>
+        </ul>
 
     </div>
 </template>
@@ -15,7 +17,7 @@
     import {TODOS} from "../store/TodoList/types";
     import TodoItem from "./TodoItem";
 
-    const {mapGetters} = createNamespacedHelpers(todoListModule)
+   const {mapGetters} = createNamespacedHelpers(todoListModule)
 
     export default {
         name: 'TodoList',
@@ -25,6 +27,7 @@
         computed:{
             ...mapGetters({
                 todolist: TODOS
+
             })
         }
     }
