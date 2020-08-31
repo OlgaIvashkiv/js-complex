@@ -1,8 +1,13 @@
 <template>
     <div>
-        <p>todo: {{item.text}}
+        <ul>
+            <li v-for="(item, i) in todolist" :key="i">
+                todo: {{item.text}}
             <button @click="remove">Remove</button>
-        </p>
+            </li>
+
+
+        </ul>
     </div>
 </template>
 
@@ -16,8 +21,8 @@ const {mapActions} = createNamespacedHelpers(todoListModule)
     export default {
         name: 'TodoItem',
         props: {
-            item:{
-                type:Object
+            todolist:{
+                type:Array
 
             }
         },

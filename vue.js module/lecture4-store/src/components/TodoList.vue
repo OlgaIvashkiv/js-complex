@@ -1,10 +1,9 @@
 <template>
     <div>
-        <ul>
-            <li v-for="(item, i) in todolist" :key="i">
-                <TodoItem :item="item"/>
-            </li>
-        </ul>
+
+<!--            <li v-for="(item, i) in todolist" :key="i">-->
+                <TodoItem :todolist="todolist"/>
+
     </div>
 </template>
 
