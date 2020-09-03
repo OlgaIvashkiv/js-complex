@@ -47,6 +47,8 @@
 //         3-вивести найбільшого хабарника
 //         меню робимо на свій смак
 
+
+
 abstract class AbsHuman {
     weight: number
     height: number
@@ -84,54 +86,55 @@ class Deputat extends AbsHuman{
 
 let deputat1 = new Deputat('Корнієнко', 'Олександр', 80, 180, 0, true);
 deputat1.giveHabar(50000)
-console.log(deputat1.sizeOfHabar)
-let deputat2 = new Deputat('Арахамія', 'Давид', 95, 185, 0, true);
+
+let deputat2 = new Deputat('Арахамія', 'Давид', 95, 185, 0, false);
+
 let deputat3 = new Deputat('Тищенко', 'Микола', 90, 190, 0, true);
+deputat3.giveHabar(100000)
 
 
-// Клас фракція
-// поля:
-//     список депутатів
-// методи:
-//     додати депутата (вводимо з клави)
-// видалити депутата(теж з клави)
-// видалити всіх негідників які брали хабаря
-// вивести найбільшого хабарника
-// вивести всіх депутатів
-// видалити всіх депутатів
-// вивести загальну суму хабарів для фракції
 class Fraktsia{
     list: Deputat[]=[]
-    // constructor(list: Deputat[]=[]){
-    //     this.list = list
-    // }
+
     addDeputat(deputat:Deputat):void{
              this.list.push(deputat)
     }
     removeDeputat(deputat){
             this.list.splice(deputat,1)
     }
+    tookHabar(){
+        this.list = this.list.filter(value => !value.habarnyk);
+    }
+    maxHabar(){
+       return this.list.sort((a,b)=>b.sizeOfHabar-a.sizeOfHabar)[0]
+    }
+    showAllDeputats(){
+        return this.list
+    }
+    deleteAllDeputats(){
+      return this.list=[]
+    }
+    sumOfHabars(){
+       return this.list.reduce(function(a, b) { return a + b.sizeOfHabar; }, 0);
+    }
 }
 
 let fraktsia = new Fraktsia();
 fraktsia.addDeputat(deputat1)
 fraktsia.addDeputat(deputat2)
-
-fraktsia.removeDeputat(deputat1)
-console.log(fraktsia)
-
-fraktsia.addDeputat(deputat1)
 fraktsia.addDeputat(deputat3)
-console.log(fraktsia)
 
-fraktsia.removeDeputat(deputat1)
-fraktsia.removeDeputat(deputat3)
+// fraktsia.tookHabar()
+// console.log(fraktsia);
 console.log('--------')
-console.log(fraktsia)
-console.log('--------')
+// console.log(fraktsia.maxHabar());
+console.log('')
+console.log(fraktsia.showAllDeputats())
+// fraktsia.deleteAllDeputats()
+console.log('----------------')
+// console.log(fraktsia)
+console.log(fraktsia.sumOfHabars());
 
-
-//
 // enum EFraktsia{
 //     SLUGA_NARODU = 'sluga_narodu',
 //     BATKIVSCHYNA = 'batkivschyna',
