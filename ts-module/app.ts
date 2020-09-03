@@ -112,7 +112,8 @@ class Fraktsia{
         return this.list
     }
     deleteAllDeputats(){
-      return this.list=[]
+        // this.list.length=0
+        this.list=[]
     }
     sumOfHabars(){
        return this.list.reduce(function(a, b) { return a + b.sizeOfHabar; }, 0);
@@ -128,19 +129,35 @@ fraktsia.addDeputat(deputat3)
 // console.log(fraktsia);
 console.log('--------')
 // console.log(fraktsia.maxHabar());
-console.log('')
-console.log(fraktsia.showAllDeputats())
-// fraktsia.deleteAllDeputats()
+console.log()
+// console.log(fraktsia.showAllDeputats())
+fraktsia.deleteAllDeputats()
 console.log('----------------')
 // console.log(fraktsia)
-console.log(fraktsia.sumOfHabars());
+// console.log(fraktsia.sumOfHabars());
 
-// enum EFraktsia{
-//     SLUGA_NARODU = 'sluga_narodu',
-//     BATKIVSCHYNA = 'batkivschyna',
-//     FOR_FUTURE = 'for_future'
-// }
-//
+
+// клас Верховна рада
+// поля:
+//     мапа фракцій
+// методи:
+//     додати\видалити фракцію
+// вивести всі фракції
+// вивести конкретну фракцію
+// додати\видалити депутата з фракції
+// вивести всіх хабарників фракції
+// вивести найбільшого хабарника у фрації
+// вивести найбільшого хабарника верховної ради
+// вивести фсіх депутатів фракції
+// вивести найбільшого хабарника фракції
+
+class VerhovnaRada{
+    // @ts-ignore
+    map: Map
+    constructor() {
+    }
+}
+
 // let slugaNarodu = [
 //     {
 //     deputatName: 'Корнієнко Олександр Сергійович',
