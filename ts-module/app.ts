@@ -59,19 +59,20 @@ abstract class AbsHuman {
 }
 
 class Deputat extends AbsHuman{
+    id: number
     name: string
     surname: string
     habarnyk?: boolean
-    sizeOfHabar: number
+    sizeOfHabar: number = 0
     constructor(surname: string, name: string, weight: number, height: number,
                 sizeOfHabar: number, habarnyk?: boolean) {
         super(weight, height)
+
+        this.id =  +(Math.random() * Date.now()).toFixed();
         this.name = name
         this.surname = surname
         this.habarnyk = habarnyk
         this.sizeOfHabar = sizeOfHabar
-        this.weight = weight
-        this.height = height
     }
     giveHabar(money:number){
         if (this.habarnyk && (money>10000 && money<1000000)){
@@ -84,12 +85,12 @@ class Deputat extends AbsHuman{
     }
 }
 
-let deputat1 = new Deputat('Корнієнко', 'Олександр', 80, 180, 0, true);
+let deputat1 = new Deputat('1Корнієнко', 'Олександр', 80, 180, 0, true);
 deputat1.giveHabar(50000)
 
-let deputat2 = new Deputat('Арахамія', 'Давид', 95, 185, 0, false);
+let deputat2 = new Deputat('2Арахамія', 'Давид', 95, 185, 0, false);
 
-let deputat3 = new Deputat('Тищенко', 'Микола', 90, 190, 0, true);
+let deputat3 = new Deputat('3Тищенко', 'Микола', 90, 190, 0, true);
 deputat3.giveHabar(100000)
 
 
@@ -97,10 +98,12 @@ class Fraktsia{
     list: Deputat[]=[]
 
     addDeputat(deputat:Deputat):void{
-             this.list.push(deputat)
+            this.list.push(deputat)
+
     }
     removeDeputat(deputat){
-            this.list.splice(deputat,1)
+        this.list = this.list.filter(dep => dep.id !== deputat.id)
+
     }
     tookHabar(){
         this.list = this.list.filter(value => !value.habarnyk);
@@ -127,11 +130,13 @@ fraktsia.addDeputat(deputat3)
 
 // fraktsia.tookHabar()
 // console.log(fraktsia);
+fraktsia.removeDeputat(deputat2)
 console.log('--------')
 // console.log(fraktsia.maxHabar());
-console.log()
+
+console.log(fraktsia)
 // console.log(fraktsia.showAllDeputats())
-fraktsia.deleteAllDeputats()
+//fraktsia.deleteAllDeputats()
 console.log('----------------')
 // console.log(fraktsia)
 // console.log(fraktsia.sumOfHabars());
@@ -151,12 +156,11 @@ console.log('----------------')
 // вивести фсіх депутатів фракції
 // вивести найбільшого хабарника фракції
 
-class VerhovnaRada{
-    // @ts-ignore
-    map: Map
-    constructor() {
-    }
-}
+// class VerhovnaRada{
+//     map: Map
+//     constructor() {
+//     }
+// }
 
 // let slugaNarodu = [
 //     {
