@@ -59,23 +59,25 @@ abstract class AbsHuman {
 }
 
 class Deputat extends AbsHuman{
+    private static count:number = 1
     id: number
     name: string
     surname: string
-    habarnyk?: boolean
-    sizeOfHabar: number = 0
+    habarnyk: boolean
+    sizeOfHabar: number
     constructor(surname: string, name: string, weight: number, height: number,
-                sizeOfHabar: number, habarnyk?: boolean) {
+                sizeOfHabar: number=0, habarnyk: boolean=false) {
         super(weight, height)
 
-        this.id =  +(Math.random() * Date.now()).toFixed();
+        // this.id =  +(Math.random() * Date.now()).toFixed();
+        this.id = Deputat.count++
         this.name = name
         this.surname = surname
         this.habarnyk = habarnyk
         this.sizeOfHabar = sizeOfHabar
     }
     giveHabar(money:number){
-        if (this.habarnyk && (money>10000 && money<1000000)){
+        if (this.habarnyk && (money>10000 && money<10000000)){
             this.sizeOfHabar += money
             console.log(`Im ${this.name} ${this.surname}! Give me your money, b..`)
             return
@@ -85,28 +87,49 @@ class Deputat extends AbsHuman{
     }
 }
 
-let deputat1 = new Deputat('1Корнієнко', 'Олександр', 80, 180, 0, true);
-deputat1.giveHabar(50000)
+let deputat1 = new Deputat('Корнієнко', 'Олександр', 80, 180, 0, true);
+deputat1.giveHabar(50000);
 
-let deputat2 = new Deputat('2Арахамія', 'Давид', 95, 185, 0, false);
+let deputat2 = new Deputat('Арахамія', 'Давид', 95, 185);
 
-let deputat3 = new Deputat('3Тищенко', 'Микола', 90, 190, 0, true);
-deputat3.giveHabar(100000)
+let deputat3 = new Deputat('Тищенко', 'Микола', 90, 190, 0, true);
+deputat3.giveHabar(100000);
+
+let deputat4 = new Deputat('Тимошенко', 'Юлія', 65, 165, 0, true);
+deputat4.giveHabar(1000000);
+
+let deputat5 = new Deputat('Соболєв', 'Сергій', 90, 190);
+let deputat6 = new Deputat('Тарута', 'Сергій', 85, 182);
+
+let deputat7 = new Deputat('Бондар', 'Віктор', 95, 180, 0, true);
+deputat7.giveHabar(150000);
+let deputat8 = new Deputat('Батенко', 'Тарас', 95, 180, 0, true);
+deputat8.giveHabar(340000);
+let deputat9 = new Deputat('Скороход', 'Анна', 95, 180, 0, true);
 
 
 class Fraktsia{
     list: Deputat[]=[]
+    fraktsiaName: string
+
+    constructor(fraktsiaName: string) {
+        this.fraktsiaName = fraktsiaName
+    }
+
+    // getFractionName(): string {
+    //     return this.fraktsiaName;
+    // }
 
     addDeputat(deputat:Deputat):void{
             this.list.push(deputat)
 
     }
-    removeDeputat(deputat){
+    removeDeputat(deputat:Deputat):void{
         this.list = this.list.filter(dep => dep.id !== deputat.id)
 
     }
     tookHabar(){
-        this.list = this.list.filter(value => !value.habarnyk);
+        return this.list = this.list.filter(value => value.habarnyk);
     }
     maxHabar(){
        return this.list.sort((a,b)=>b.sizeOfHabar-a.sizeOfHabar)[0]
@@ -123,23 +146,29 @@ class Fraktsia{
     }
 }
 
-let fraktsia = new Fraktsia();
-fraktsia.addDeputat(deputat1)
-fraktsia.addDeputat(deputat2)
-fraktsia.addDeputat(deputat3)
 
-// fraktsia.tookHabar()
-// console.log(fraktsia);
-fraktsia.removeDeputat(deputat2)
+const fraktsiaSN = new Fraktsia('SLUGA_NARODU');
+fraktsiaSN.addDeputat(deputat1);
+fraktsiaSN.addDeputat(deputat2);
+fraktsiaSN.addDeputat(deputat3);
+
+const fraktsiaB = new Fraktsia('BATKIVSCHYNA');
+fraktsiaB.addDeputat(deputat4);
+fraktsiaB.addDeputat(deputat5);
+fraktsiaB.addDeputat(deputat6);
+
+const fraktsiaFF = new Fraktsia('FOR_FUTURE');
+fraktsiaFF.addDeputat(deputat7);
+fraktsiaFF.addDeputat(deputat8);
+fraktsiaFF.addDeputat(deputat9);
+
+
 console.log('--------')
-// console.log(fraktsia.maxHabar());
-
-console.log(fraktsia)
-// console.log(fraktsia.showAllDeputats())
-//fraktsia.deleteAllDeputats()
+console.log(fraktsiaFF)
 console.log('----------------')
-// console.log(fraktsia)
-// console.log(fraktsia.sumOfHabars());
+console.log(fraktsiaFF.tookHabar());
+
+console.log(fraktsiaFF.sumOfHabars());
 
 
 // клас Верховна рада
@@ -156,69 +185,32 @@ console.log('----------------')
 // вивести фсіх депутатів фракції
 // вивести найбільшого хабарника фракції
 
-// class VerhovnaRada{
-//     map: Map
-//     constructor() {
-//     }
-// }
+class VerhovnaRada{
+    fraktsiaList: Fraktsia[]=[]
 
-// let slugaNarodu = [
-//     {
-//     deputatName: 'Корнієнко Олександр Сергійович',
-//     habar: 50000,
-//     fraktsia: EFraktsia.SLUGA_NARODU
-// },
-//
-// {
-//     deputatName: 'Арахамія Давид Георгійович',
-//     habar: 1000000,
-//     fraktsia: EFraktsia.SLUGA_NARODU
-// },
-//
-// {
-//     deputatName: 'Тищенко Микола Миколайович',
-//     habar: 150000,
-//     fraktsia: EFraktsia.SLUGA_NARODU
-// }
-// ];
-// let batkivschuna = [
-// {
-//     deputatName: 'Тимошенко Юлія Володимирівна',
-//     habar: 10000000,
-//     fraktsia: EFraktsia.BATKIVSCHYNA
-// },
-//
-// {
-//     deputatName: 'Соболєв Сергій Владиславович',
-//     habar: 400000,
-//     fraktsia: EFraktsia.BATKIVSCHYNA
-// },
-//
-// {
-//     deputatName: 'Тарута Сергій Олексійович',
-//     habar: 0,
-//     fraktsia: EFraktsia.BATKIVSCHYNA
-// }
-// ];
-// let forFoture = [
-// {
-//     deputatName: 'Бондар Віктор Васильович',
-//     habar: 340000,
-//     fraktsia: EFraktsia.FOR_FUTURE
-// },
-//
-// {
-//     deputatName: 'Батенко Тарас Іванович',
-//     habar: 250000,
-//     fraktsia: EFraktsia.FOR_FUTURE
-// },
-//
-// {
-//     deputatName: 'Скороход Анна Костянтинівна',
-//     habar: 0,
-//     fraktsia: EFraktsia.FOR_FUTURE
-// }
-// ]
-//
+    addFraktsia(fraktsia:Fraktsia):void{
+        this.fraktsiaList.push(fraktsia)
+    }
+    removeFraktsia(fraktsia:Fraktsia){
+        this.fraktsiaList = this.fraktsiaList.filter(value => value.fraktsiaName !== fraktsia.fraktsiaName);
+    }
+    showAllFraktions(){
+        return this.fraktsiaList
+    }
+    showFraktion(fraktsia){
+    return this.fraktsiaList.filter(value => value.fraktsiaName.toLowerCase()
+        === fraktsia.toLowerCase());
+    }
+
+}
+
+let verhovnaRada = new VerhovnaRada();
+verhovnaRada.addFraktsia(fraktsiaFF)
+verhovnaRada.addFraktsia(fraktsiaSN)
+verhovnaRada.addFraktsia(fraktsiaB)
+
+
+console.log(verhovnaRada.showFraktion(''));
+
 
 
