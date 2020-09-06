@@ -116,9 +116,9 @@ class Fraktsia{
         this.fraktsiaName = fraktsiaName
     }
 
-    // getFractionName(): string {
-    //     return this.fraktsiaName;
-    // }
+    getFractionName(): string {
+        return this.fraktsiaName;
+    }
 
     addDeputat(deputat:Deputat):void{
             this.list.push(deputat)
@@ -158,7 +158,6 @@ fraktsiaB.addDeputat(deputat5);
 fraktsiaB.addDeputat(deputat6);
 
 const fraktsiaFF = new Fraktsia('FOR_FUTURE');
-fraktsiaFF.addDeputat(deputat7);
 fraktsiaFF.addDeputat(deputat8);
 fraktsiaFF.addDeputat(deputat9);
 
@@ -176,14 +175,14 @@ console.log(fraktsiaFF.sumOfHabars());
 //     мапа фракцій
 // методи:
 //     додати\видалити фракцію
-// вивести всі фракції
-// вивести конкретну фракцію
-// додати\видалити депутата з фракції
-// вивести всіх хабарників фракції
-// вивести найбільшого хабарника у фрації
-// вивести найбільшого хабарника верховної ради
-// вивести фсіх депутатів фракції
-// вивести найбільшого хабарника фракції
+//1вивести всі фракції
+// 2вивести конкретну фракцію
+// 3додати\видалити депутата з фракції---
+// 4вивести всіх хабарників фракції---
+// 5вивести найбільшого хабарника у фрації---
+// 6вивести найбільшого хабарника верховної ради---
+// 7вивести фсіх депутатів фракції---
+// 8вивести найбільшого хабарника фракції---
 
 class VerhovnaRada{
     fraktsiaList: Fraktsia[]=[]
@@ -201,6 +200,19 @@ class VerhovnaRada{
     return this.fraktsiaList.filter(value => value.fraktsiaName.toLowerCase()
         === fraktsia.toLowerCase());
     }
+    addDeputat(deputat, fraktsia){
+        for (const fraction of this.fraktsiaList) {
+            if (fraktsia===fraction.fraktsiaName){
+                fraction.list.push(deputat)
+            }
+        }
+    }
+    removeDeputat(deputat){
+        for (const fraction of this.fraktsiaList) {
+            fraction.list.filter()
+        }
+    }
+
 
 }
 
@@ -209,6 +221,6 @@ verhovnaRada.addFraktsia(fraktsiaFF)
 verhovnaRada.addFraktsia(fraktsiaSN)
 verhovnaRada.addFraktsia(fraktsiaB)
 
-
-
-
+verhovnaRada.addDeputat(deputat7,'FOR_FUTURE')
+console.log(verhovnaRada.showAllFraktions());
+verhovnaRada.removeDeputat(deputat7)
