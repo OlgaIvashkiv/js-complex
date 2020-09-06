@@ -210,7 +210,5 @@ verhovnaRada.addFraktsia(fraktsiaSN)
 verhovnaRada.addFraktsia(fraktsiaB)
 
 
-console.log(verhovnaRada.showFraktion(''));
-
 
 
