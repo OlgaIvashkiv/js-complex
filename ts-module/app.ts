@@ -177,12 +177,11 @@ console.log(fraktsiaFF.sumOfHabars());
 //     додати\видалити фракцію
 //1вивести всі фракції
 // 2вивести конкретну фракцію
-// 3додати\видалити депутата з фракції-
-// 4вивести всіх хабарників фракції---
-// 5вивести найбільшого хабарника у фрації---
-// 6вивести найбільшого хабарника верховної ради---
-// 7вивести фсіх депутатів фракції---
-// 8вивести найбільшого хабарника фракції---
+// 3додати\видалити депутата з фракції
+// 4вивести всіх хабарників фракції
+// 5вивести найбільшого хабарника у фрації
+// 6вивести найбільшого хабарника верховної ради
+
 
 class VerhovnaRada{
     fraktsiaList: Fraktsia[]=[]
@@ -215,7 +214,6 @@ class VerhovnaRada{
             }
         }
 
-
     }
     allHabarnikFromFraktsia(fraktsia:Fraktsia){
         for (const fraction of this.fraktsiaList) {
@@ -223,6 +221,21 @@ class VerhovnaRada{
                return fraction.tookHabar()
             }
         }
+    }
+    showMaxHabarnik(fraktsia:Fraktsia){
+        for (const fraction of this.fraktsiaList) {
+            if (fraction.fraktsiaName===fraktsia.fraktsiaName){
+                return fraction.maxHabar()
+            }
+        }
+    }
+    showBiggestHabarnikOfVR(){
+        const arr:Deputat[]=[];
+        for (const fraktsia of this.fraktsiaList) {
+            arr.push(fraktsia.maxHabar());
+        }
+        arr.sort(((a, b) => b.sizeOfHabar-a.sizeOfHabar))
+        return arr[0]
     }
 
 
@@ -239,4 +252,6 @@ verhovnaRada.removeDeputat(deputat7, fraktsiaFF)
 // console.log(verhovnaRada.showAllFraktions(), '**fraktsia list');
 // console.log(verhovnaRada.allHabarnikFromFraktsia(''));
 verhovnaRada.allHabarnikFromFraktsia(fraktsiaSN);
+// console.log(verhovnaRada.showMaxHabarnik(fraktsiaSN),'**MAX HABARNIK');
 
+// console.log(verhovnaRada.showBiggestHabarnikOfVR());
