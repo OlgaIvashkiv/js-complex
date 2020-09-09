@@ -124,7 +124,7 @@ class Fraktsia{
             this.list.push(deputat)
 
     }
-    removeDeputat(deputat:Deputat):void{
+    removeDeputate(deputat:Deputat):void{
         this.list = this.list.filter(dep => dep.id !== deputat.id)
 
     }
@@ -177,7 +177,7 @@ console.log(fraktsiaFF.sumOfHabars());
 //     додати\видалити фракцію
 //1вивести всі фракції
 // 2вивести конкретну фракцію
-// 3додати\видалити депутата з фракції---
+// 3додати\видалити депутата з фракції-
 // 4вивести всіх хабарників фракції---
 // 5вивести найбільшого хабарника у фрації---
 // 6вивести найбільшого хабарника верховної ради---
@@ -200,18 +200,31 @@ class VerhovnaRada{
     return this.fraktsiaList.filter(value => value.fraktsiaName.toLowerCase()
         === fraktsia.toLowerCase());
     }
-    addDeputat(deputat, fraktsia){
+    addDeputat(deputat, fraktsia):void{
         for (const fraction of this.fraktsiaList) {
             if (fraktsia===fraction.fraktsiaName){
                 fraction.list.push(deputat)
             }
         }
     }
-    removeDeputat(deputat){
+    removeDeputat(deputat:Deputat, fraktsia:Fraktsia):void{
         for (const fraction of this.fraktsiaList) {
-            fraction.list.filter()
+            if (fraktsia.fraktsiaName===fraction.fraktsiaName){
+                fraction.removeDeputate(deputat);
+
+            }
+        }
+
+
+    }
+    allHabarnikFromFraktsia(fraktsia:Fraktsia){
+        for (const fraction of this.fraktsiaList) {
+            if (fraction.fraktsiaName===fraktsia.fraktsiaName){
+               return fraction.tookHabar()
+            }
         }
     }
+
 
 
 }
@@ -222,5 +235,8 @@ verhovnaRada.addFraktsia(fraktsiaSN)
 verhovnaRada.addFraktsia(fraktsiaB)
 
 verhovnaRada.addDeputat(deputat7,'FOR_FUTURE')
-console.log(verhovnaRada.showAllFraktions());
-verhovnaRada.removeDeputat(deputat7)
+verhovnaRada.removeDeputat(deputat7, fraktsiaFF)
+// console.log(verhovnaRada.showAllFraktions(), '**fraktsia list');
+// console.log(verhovnaRada.allHabarnikFromFraktsia(''));
+verhovnaRada.allHabarnikFromFraktsia(fraktsiaSN);
+
