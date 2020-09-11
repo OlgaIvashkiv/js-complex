@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {IToDo} from "./models/todomodel";
 import {TodolistService} from "./services/todolist.service"
+import {getSyntheticPropertyName} from "@angular/compiler/src/render3/util";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,11 @@ export class AppComponent {
 
   constructor(private TodolistService:TodolistService) {
     this.TodolistService.getTodoList().subscribe(todo=>{
-      console.log(todo)
+      console.log(todo);
+      for (const key in todo) {
+        this.todolist.push({id: key, ...todo[key]})
+      }
+        console.log(this.todolist)
     })
   }
 }

@@ -1,5 +1,5 @@
 export interface IToDo {
   id: string
-  todo: string
+  text: string
 
 }
