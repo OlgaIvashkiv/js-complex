@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {IToDo} from "./models/todomodel";
 import {TodolistService} from "./services/todolist.service"
-import {getSyntheticPropertyName} from "@angular/compiler/src/render3/util";
+
 
 @Component({
   selector: 'app-root',
@@ -20,5 +20,6 @@ export class AppComponent {
       }
         console.log(this.todolist)
     })
+    // this.TodolistService.addTodo(todo)
   }
 }
