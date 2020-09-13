@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {IToDo} from "../../models/todomodel";
 import {TodolistService} from "../../services/todolist.service"
 
@@ -9,9 +9,6 @@ import {TodolistService} from "../../services/todolist.service"
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {
-
-  }
 
   ngOnInit(): void {
   }

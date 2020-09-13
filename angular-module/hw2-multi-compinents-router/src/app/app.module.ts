@@ -7,13 +7,15 @@ import { HomeComponent } from './components/home/home.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { SingleTodoComponent } from './components/single-todo/single-todo.component';
 import { HttpClientModule} from "@angular/common/http";
+import { SingleTodoInfoComponent } from './components/single-todo-info/single-todo-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TodoListComponent,
-    SingleTodoComponent
+    SingleTodoComponent,
+    SingleTodoInfoComponent
   ],
   imports: [
     BrowserModule,

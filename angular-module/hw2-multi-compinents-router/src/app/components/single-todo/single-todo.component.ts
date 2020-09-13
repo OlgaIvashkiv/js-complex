@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {IToDo} from "../../models/todomodel";
+
 
 @Component({
   selector: 'app-single-todo',
@@ -6,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./single-todo.component.css']
 })
 export class SingleTodoComponent implements OnInit {
+  @Input() todo: IToDo
 
-  constructor() { }
 
   ngOnInit(): void {
   }
