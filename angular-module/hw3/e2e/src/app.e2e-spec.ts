@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('hw2-multi-components app is running!');
+    expect(page.getTitleText()).toEqual('hw3 app is running!');
   });
 
   afterEach(async () => {
