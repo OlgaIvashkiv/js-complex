@@ -5,6 +5,8 @@
   <button [routerLink]="['details',user.id]" [state]="{user : user}">Click for email</button>
   <button [routerLink]="['emails',user.id]">Emails</button>
   <button (click)="goToUserEmail(user.id)">Emails using queryP</button>
+  <button [routerLink]="['posts']" [queryParams]="{id: user.id, name: user.name}">User Posts</button>
+
 
 </div>
 <hr>

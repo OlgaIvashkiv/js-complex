@@ -16,6 +16,7 @@ import { UserWithPostsComponent } from './entity/user/components/user-details-st
 import { PostWithCommentsComponent } from './entity/post/components/post-with-comments/post-with-comments.component';
 import { UserDetailsServerRequestComponent } from './entity/user/components/user-details-server-request/user-details-server-request.component';
 import { UserDetailsUsingQueryParamsComponent } from './entity/user/components/user-details-using-query-params/user-details-using-query-params.component';
+import { UserPostsComponent } from './entity/user/components/user-posts/user-posts.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UserDetailsUsingQueryParamsComponent } from './entity/user/components/u
     UserWithPostsComponent,
     PostWithCommentsComponent,
     UserDetailsServerRequestComponent,
-    UserDetailsUsingQueryParamsComponent
+    UserDetailsUsingQueryParamsComponent,
+    UserPostsComponent
   ],
   imports: [
     BrowserModule,

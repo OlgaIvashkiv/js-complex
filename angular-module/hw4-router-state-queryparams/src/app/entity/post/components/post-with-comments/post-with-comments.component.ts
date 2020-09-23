@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {PostService} from "../../service/post.service";
 import {Comment} from "../../../../models/comment"
+import {CommentService} from "../../../comment/service/comment.service";
 
 @Component({
   selector: 'app-post-with-comments',
@@ -10,13 +10,11 @@ import {Comment} from "../../../../models/comment"
 })
 export class PostWithCommentsComponent implements OnInit {
     postWithComment: Comment[]
-    id: number
   constructor(private activatedRoute:ActivatedRoute,
-              private postService: PostService) {
-    this.activatedRoute.params.subscribe(value => {
+              private commentService: CommentService) {
+    this.activatedRoute.queryParams.subscribe(value => {
       console.log(value)
-      this.id=value.id
-        this.postService.getCommentsforPost(value.id).subscribe(value => {
+        this.commentService.getCommentsforPost(value.id).subscribe(value => {
           console.log(value);
           this.postWithComment = value
         })
