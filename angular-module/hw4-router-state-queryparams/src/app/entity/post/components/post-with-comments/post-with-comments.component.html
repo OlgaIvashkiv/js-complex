@@ -1,0 +1,9 @@
+<h3>Comments for post {{id}}</h3>
+<div *ngFor="let comment of postWithComment">
+  {{comment.id}}
+  {{comment.name}}<br>
+  {{comment.body}}<br>
+  EMAIL:{{comment.email}}
+  <hr>
+</div>
+
