@@ -1,0 +1,5 @@
+<div>
+  <p>{{post.id}} - {{post.title}}
+    <button [routerLink]="['comments']" [queryParams]="{id: post.id}">Open comments</button>
+  </p>
+</div>

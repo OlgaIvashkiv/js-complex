@@ -1,0 +1,5 @@
+<div>
+  <p>{{user?.id}}. {{user?.name}} {{user?.username}}
+  <button [routerLink]="['posts']" [queryParams]="{id: user.id}">Open posts</button>
+  </p>
+  </div>

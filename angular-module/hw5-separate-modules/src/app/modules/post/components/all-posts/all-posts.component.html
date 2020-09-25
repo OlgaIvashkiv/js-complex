@@ -1,0 +1,6 @@
+<h3>posts List</h3>
+<div *ngFor="let post of postList">
+  <app-single-post [post]="post"></app-single-post>
+  <hr>
+</div>
+<router-outlet></router-outlet>
