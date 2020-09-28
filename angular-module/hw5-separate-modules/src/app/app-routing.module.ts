@@ -5,7 +5,8 @@ import {AllCommentsComponent} from "./modules/comment/components/all-comments/al
 const routes: Routes = [
   {path: 'users', loadChildren: () => import('./modules/user/user.module').then(m=>m.UserModule) },
   {path: 'posts', loadChildren: () => import('./modules/post/post.module').then(m=>m.PostModule) },
-  {path: 'comments', component: AllCommentsComponent},
+  {path: 'comments', loadChildren: () => import('./modules/comment/comment.module').then(m=>m.CommentModule) },
+  // {path: 'comments', component: AllCommentsComponent},
 ];
 
 @NgModule({
