@@ -1,1 +1,10 @@
-<input [(ngModel)]="xxx" (input)="checktitle()">
+<label>Select User ID: </label>
+<select required #mySelect="ngModel" [(ngModel)]="userId"
+        (change)="selectOption(mySelect.value)"
+>
+  <option *ngFor="let user of usersList">
+    {{user.id}}
+  </option>
+</select>
+
+<app-user [user]="user"></app-user>

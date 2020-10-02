@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {UserService} from "./services/user.service";
+import {User} from "./models/user";
+
 
 @Component({
   selector: 'app-root',
@@ -7,9 +10,33 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'hw6-forms-select';
-  xxx: string;
 
-  checktitle():void {
-    console.log(this.xxx)
+  usersList: User[]
+
+  userId: number
+
+  user: User
+
+
+
+  constructor(private userService: UserService) {
+    this.userService.getAllUsers().subscribe(value => {
+      this.usersList = value
+      console.log(value)
+
+    })
   }
+
+  selectOption(id: number): void {
+    this.userService.getFilteredUser(id).subscribe(value =>{
+      this.user = value
+      console.log(this.user.username,'this user')
+      console.log(value)
+
+    })
+
+  }
+
+
+
 }
