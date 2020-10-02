@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { Post } from 'src/app/models/post';
+
+import {Post} from "../../models/post";
 import {User} from "../../models/user";
 import {UserService} from "../../services/user.service";
 
@@ -12,7 +13,7 @@ export class UserComponent implements OnInit {
 
   @Input() user : User
 
-  postsList: Post
+  postsList: Post[]
   constructor(private userService:UserService) { }
 
   ngOnInit(): void {
