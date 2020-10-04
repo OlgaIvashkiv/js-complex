@@ -3,12 +3,10 @@
   {{user?.id}}
   {{user?.name}}
   {{user?.username}}
-  <button (click)="openPosts(user.id)">Open posts</button>
+  <button (click)="goToPosts(user.id)">
+  Open posts</button>
   <hr>
 </div>
+<app-all-posts [postList]="postsList"></app-all-posts>
 
-<div *ngFor="let post of postsList">
-  {{post?.userId}}
-  {{post?.id}}
-  {{post?.body}}
-</div>
+<router-outlet></router-outlet>

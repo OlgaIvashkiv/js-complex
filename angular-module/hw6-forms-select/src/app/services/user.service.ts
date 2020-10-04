@@ -19,8 +19,8 @@ export class UserService {
     return this.httpClient.get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
   }
 
-  openAllUserPosts(id: number): Observable<Post> {
-    return this.httpClient.get<Post>(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
-  }
+  // openAllUserPosts(id: number): Observable<Post> {
+  //   return this.httpClient.get<Post>(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
+  // }
 
 }
