@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="submitform(form)">
+<form [formGroup]="form" (change)="submitform(form)">
   <label>Choose User</label> <br>
   <select [formControl]="selectUserId">
     <option *ngFor="let user of userList"
@@ -6,18 +6,10 @@
       {{user.name}}
     </option>
   </select>
-  <button
-    [disabled]="!form.valid"
-  >
-  Choose user</button>
+<!--  <button-->
+<!--    [disabled]="!form.valid"-->
+<!--  >-->
+<!--  Choose user</button>-->
 </form>
-<br>
-<br>
-<div *ngIf="form.valid">
-  <div *ngFor="let u of user">
-    {{u.id}}
-    {{u.name}} <br>
-    {{u.username}} <br>
-    {{u.email}}
-  </div>
-</div>
+
+<router-outlet></router-outlet>

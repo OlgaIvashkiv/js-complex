@@ -14,6 +14,7 @@ export class UsersPipe implements PipeTransform {
                        <p>My email: ${user.email}</p>
                   </div>`
     })
+
     return newUser
   }
 }
